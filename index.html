@@ -1,0 +1,483 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#06170f"><meta name="mobile-web-app-capable" content="yes"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon-192.png"><link rel="icon" href="icon-192.png"><style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style><title>MKtrades Journal</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: sticky brand header, one scrolling view, fixed five-tab bar. Single deep-green look with candlestick texture and a faint logo watermark. */
+:root{
+  --bg:#06170f; --bg2:#0a2418; --surface:rgba(13,43,30,.92); --surface2:#163f2c; --line:#245f43;
+  --fg:#e9f5ee; --muted:#93bfa8; --gold:#f4b73a; --gold-ink:#241502; --up:#3ee08a; --down:#ff7062;
+  --display:'Barlow Condensed','Arial Narrow',system-ui,sans-serif;
+  --body:'Barlow',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+  --gl:max(16px,env(safe-area-inset-left,0px)); --gr:max(16px,env(safe-area-inset-right,0px));
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg) url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjIwIiB2aWV3Qm94PSIwIDAgMzYwIDIyMCI+PGcgb3BhY2l0eT0iLjA3Ij48bGluZSB4MT0iMTUiIHkxPSIxMzEuMCIgeDI9IjE1IiB5Mj0iMTY4LjAiIHN0cm9rZT0iIzNlZTA4YSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48cmVjdCB4PSIxMCIgeT0iMTQxLjAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxOCIgZmlsbD0iIzNlZTA4YSIvPjxsaW5lIHgxPSI0NSIgeTE9IjExOC4wIiB4Mj0iNDUiIHkyPSIxNDkuMCIgc3Ryb2tlPSIjM2VlMDhhIiBzdHJva2Utd2lkdGg9IjEuNSIvPjxyZWN0IHg9IjQwIiB5PSIxMjguMCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEyIiBmaWxsPSIjM2VlMDhhIi8+PGxpbmUgeDE9Ijc1IiB5MT0iMTI1LjAiIHgyPSI3NSIgeTI9IjE2Ni4wIiBzdHJva2U9IiNmZjcwNjIiIHN0cm9rZS13aWR0aD0iMS41Ii8+PHJlY3QgeD0iNzAiIHk9IjEzNS4wIiB3aWR0aD0iMTAiIGhlaWdodD0iMjIiIGZpbGw9IiNmZjcwNjIiLz48bGluZSB4MT0iMTA1IiB5MT0iMTExLjAiIHgyPSIxMDUiIHkyPSIxNDQuMCIgc3Ryb2tlPSIjM2VlMDhhIiBzdHJva2Utd2lkdGg9IjEuNSIvPjxyZWN0IHg9IjEwMCIgeT0iMTIxLjAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxNCIgZmlsbD0iIzNlZTA4YSIvPjxsaW5lIHgxPSIxMzUiIHkxPSIxMTUuMCIgeDI9IjEzNSIgeTI9IjE2MC4wIiBzdHJva2U9IiMzZWUwOGEiIHN0cm9rZS13aWR0aD0iMS41Ii8+PHJlY3QgeD0iMTMwIiB5PSIxMjUuMCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjI2IiBmaWxsPSIjM2VlMDhhIi8+PGxpbmUgeDE9IjE2NSIgeTE9Ijg5LjAiIHgyPSIxNjUiIHkyPSIxMjIuMCIgc3Ryb2tlPSIjZmY3MDYyIiBzdHJva2Utd2lkdGg9IjEuNSIvPjxyZWN0IHg9IjE2MCIgeT0iOTkuMCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjE0IiBmaWxsPSIjZmY3MDYyIi8+PGxpbmUgeDE9IjE5NSIgeTE9IjEwMC4wIiB4Mj0iMTk1IiB5Mj0iMTM5LjAiIHN0cm9rZT0iIzNlZTA4YSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48cmVjdCB4PSIxOTAiIHk9IjExMC4wIiB3aWR0aD0iMTAiIGhlaWdodD0iMjAiIGZpbGw9IiMzZWUwOGEiLz48bGluZSB4MT0iMjI1IiB5MT0iODQuMCIgeDI9IjIyNSIgeTI9IjExNS4wIiBzdHJva2U9IiMzZWUwOGEiIHN0cm9rZS13aWR0aD0iMS41Ii8+PHJlY3QgeD0iMjIwIiB5PSI5NC4wIiB3aWR0aD0iMTAiIGhlaWdodD0iMTIiIGZpbGw9IiMzZWUwOGEiLz48bGluZSB4MT0iMjU1IiB5MT0iOTAuMCIgeDI9IjI1NSIgeTI9IjEzMy4wIiBzdHJva2U9IiNmZjcwNjIiIHN0cm9rZS13aWR0aD0iMS41Ii8+PHJlY3QgeD0iMjUwIiB5PSIxMDAuMCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjI0IiBmaWxsPSIjZmY3MDYyIi8+PGxpbmUgeDE9IjI4NSIgeTE9IjY2LjAiIHgyPSIyODUiIHkyPSIxMDEuMCIgc3Ryb2tlPSIjM2VlMDhhIiBzdHJva2Utd2lkdGg9IjEuNSIvPjxyZWN0IHg9IjI4MCIgeT0iNzYuMCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjE2IiBmaWxsPSIjM2VlMDhhIi8+PGxpbmUgeDE9IjMxNSIgeTE9Ijc0LjAiIHgyPSIzMTUiIHkyPSIxMTMuMCIgc3Ryb2tlPSIjM2VlMDhhIiBzdHJva2Utd2lkdGg9IjEuNSIvPjxyZWN0IHg9IjMxMCIgeT0iODQuMCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjIwIiBmaWxsPSIjM2VlMDhhIi8+PGxpbmUgeDE9IjM0NSIgeTE9IjYyLjAiIHgyPSIzNDUiIHkyPSI5My4wIiBzdHJva2U9IiNmZjcwNjIiIHN0cm9rZS13aWR0aD0iMS41Ii8+PHJlY3QgeD0iMzQwIiB5PSI3Mi4wIiB3aWR0aD0iMTAiIGhlaWdodD0iMTIiIGZpbGw9IiNmZjcwNjIiLz48L2c+PC9zdmc+");background-size:360px 220px;color:var(--fg);font:15px/1.45 var(--body);padding-left:var(--gl);padding-right:var(--gr);min-height:100vh;overflow-x:hidden}
+[hidden]{display:none!important}
+.wm{position:fixed;inset:0;display:grid;place-items:center;pointer-events:none;z-index:0}
+.wm img{width:min(82vw,380px);opacity:.08}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;margin-left:calc(-1*var(--gl));margin-right:calc(-1*var(--gr));padding:10px var(--gr) 10px var(--gl);background:var(--bg2);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg2)}
+.top img{width:40px;height:40px;border-radius:10px;flex:none}
+.brand{min-width:0;flex:1}
+.brand b{display:block;font:700 24px/1 var(--display);letter-spacing:.02em}
+.brand b span{color:var(--gold)}
+.brand small{display:block;margin-top:3px;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.icon-btn{flex:none;width:44px;height:44px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--fg);display:grid;place-items:center;cursor:pointer}
+.icon-btn svg,.nav svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#view{position:relative;z-index:1;padding:16px 0 calc(92px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:14px}
+h1{font:700 30px/1.05 var(--display);letter-spacing:.01em;margin:4px 0 0}
+h2{font:600 22px/1.1 var(--display);margin:0}
+h3{font:600 12px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+p{margin:0}
+.muted{color:var(--muted)}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.up{color:var(--up)} .down{color:var(--down)} .gold{color:var(--gold)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;min-width:0}
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.tiles .t{background:var(--surface2);border-radius:10px;padding:12px 14px;border:1px solid var(--line)}
+.tiles small{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.tiles b{display:block;font:500 26px/1.15 var(--mono);margin-top:4px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:20px;padding:8px 14px;font:500 13px var(--body);cursor:pointer;min-height:36px}
+.chip.on{background:var(--gold);color:var(--gold-ink);border-color:var(--gold)}
+label{display:flex;flex-direction:column;gap:5px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);min-width:0}
+input,select,textarea{width:100%;min-width:0;background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:11px 12px;font:16px var(--body);letter-spacing:0;text-transform:none}
+input.mono{font-family:var(--mono)}
+textarea{resize:vertical;min-height:70px}
+input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:1px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 18px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--fg);font:600 15px var(--body);cursor:pointer;text-decoration:none}
+.btn.pri{background:var(--gold);border-color:var(--gold);color:var(--gold-ink)}
+.btn.full{width:100%}
+.btn.warn{border-color:var(--down);color:var(--down)}
+.btn.sm{min-height:38px;padding:0 12px;font-size:14px}
+.seg{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--bg)}
+.seg button{flex:1;min-width:0;border:0;border-right:1px solid var(--line);background:transparent;color:var(--muted);padding:11px 4px;font:500 14px var(--body);cursor:pointer;min-height:44px}
+.seg button:last-child{border-right:0}
+.seg button.on{background:var(--gold);color:var(--gold-ink);font-weight:600}
+.seg button.on[data-v="Buy"]{background:var(--up);color:#042313}
+.seg button.on[data-v="Sell"]{background:var(--down);color:#2a0703}
+.fld{display:flex;flex-direction:column;gap:5px}
+.fld>span{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.stack{display:flex;flex-direction:column;gap:12px}
+.row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);min-width:0;color:inherit;text-decoration:none}
+.row:last-child{border-bottom:0;padding-bottom:0}
+.row .l{flex:1;min-width:0}
+.row .l b{display:block;font-weight:600;font-size:16px}
+.row .l small{display:block;color:var(--muted);font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .r{text-align:right;flex:none}
+.pill{display:inline-block;font:600 11px var(--body);letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:5px;margin-left:6px;vertical-align:2px}
+.pill.buy{background:rgba(62,224,138,.16);color:var(--up)} .pill.sell{background:rgba(255,112,98,.16);color:var(--down)}
+.pill.open{background:rgba(244,183,58,.16);color:var(--gold)} .pill.smp{background:rgba(147,191,168,.16);color:var(--muted)}
+.grade{display:inline-block;min-width:22px;text-align:center;font:600 12px var(--body);padding:2px 6px;border-radius:5px;border:1px solid var(--line);color:var(--muted);margin-top:3px}
+.brow{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) auto;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
+.brow:last-child{border-bottom:0;padding-bottom:0}
+.brow .bl{min-width:0;font-weight:500}
+.brow small{display:block;color:var(--muted);font-size:12px;font-weight:400}
+.bbar{height:8px;background:var(--bg);border-radius:4px;overflow:hidden}
+.bbar i{display:block;height:100%;border-radius:4px}
+.bbar i.up{background:var(--up)} .bbar i.down{background:var(--down)}
+.kv{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}
+.kv:last-child{border-bottom:0;padding-bottom:0}
+.kv span:first-child{color:var(--muted)} .kv span:last-child{text-align:right;min-width:0;overflow-wrap:anywhere}
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--bg2);border-top:1px solid var(--line);padding:6px var(--gr) calc(6px + env(safe-area-inset-bottom,0px)) var(--gl);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:2px}
+.nav a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;color:var(--muted);text-decoration:none;font:500 11px var(--body);letter-spacing:.04em;border-radius:8px;min-height:48px}
+.nav a.on{color:var(--gold)}
+.nav a.add svg{width:26px;height:26px}
+details.card>summary{cursor:pointer;font:600 12px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);list-style:none;min-height:24px}
+details.card>summary::-webkit-details-marker{display:none}
+details.card[open]>summary{margin-bottom:12px}
+.lots{font:500 40px/1 var(--mono);color:var(--gold)}
+.note{font-size:13px;color:var(--muted)}
+.err{color:var(--down);font-size:14px}
+.warnbox{border:1px solid var(--gold);color:var(--gold);border-radius:8px;padding:9px 12px;font-size:13.5px}
+.shot{width:100%;border-radius:8px;border:1px solid var(--line);display:block}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(86px + env(safe-area-inset-bottom,0px));background:var(--gold);color:var(--gold-ink);font:600 14px var(--body);padding:10px 16px;border-radius:10px;z-index:20;max-width:calc(100vw - 32px)}
+.empty{text-align:center;padding:26px 16px}
+.empty img{width:96px;height:96px;border-radius:22px;margin:0 auto 14px;display:block}
+.empty p{color:var(--muted);margin:8px 0 16px}
+.wk{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.wk div{text-align:center;min-width:0}
+svg.curve text{font:11px var(--mono);fill:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.toast{animation:pop .18s ease-out}@keyframes pop{from{opacity:0;transform:translate(-50%,6px)}}}
+</style>
+</head><body>
+<div class="wm" aria-hidden="true"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+CiAgPHRpdGxlPk1LdHJhZGVzIGxvZ288L3RpdGxlPgogIDxkZWZzPgogICAgPHJhZGlhbEdyYWRpZW50IGlkPSJiZyIgY3g9IjAuNSIgY3k9IjAuMzUiIHI9IjAuODUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMxZjg3NTgiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIwLjU1IiBzdG9wLWNvbG9yPSIjMGQ0YTMwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzA0MWExMCIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZmFjZSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZmYwYjMiLz48c3RvcCBvZmZzZXQ9IjAuNDUiIHN0b3AtY29sb3I9IiNmN2I3MzMiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNjNzdkMGEiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNpZGUiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjOGE1YTBlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjM2EyNDA2Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGcgaWQ9Im1rIj4KICAgICAgPHBvbHlnb24gcG9pbnRzPSIwLDE0MCAwLDAgMjgsMCA2NSw3MiAxMDIsMCAxMzAsMCAxMzAsMTQwIDEwNCwxNDAgMTA0LDUwIDY1LDExOCAyNiw1MCAyNiwxNDAiLz4KICAgICAgPHBvbHlnb24gcG9pbnRzPSIxNDYsMCAxNzQsMCAxNzQsNTggMjM0LDAgMjcyLDAgMjA4LDcwIDI3NiwxNDAgMjM4LDE0MCAxNzQsODIgMTc0LDE0MCAxNDYsMTQwIi8+CiAgICA8L2c+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iOTYiIGZpbGw9InVybCgjYmcpIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjU2LDI1Nikgc2NhbGUoMS4wKSB0cmFuc2xhdGUoLTI1NiwtMjU2KSI+CiAgPGc+CjxnIG9wYWNpdHk9IjAuNSI+PGxpbmUgeDE9IjQ0IiB5MT0iMzczLjAiIHgyPSI0NCIgeTI9IjQyNS4wIiBzdHJva2U9IiMzZWUwOGEiIHN0cm9rZS13aWR0aD0iMyIvPjxyZWN0IHg9IjM2IiB5PSIzODcuMCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjI2IiByeD0iMiIgZmlsbD0iIzNlZTA4YSIvPjwvZz4KPGcgb3BhY2l0eT0iMC41Ij48bGluZSB4MT0iNzYiIHkxPSIzNDQuMCIgeDI9Ijc2IiB5Mj0iMzk4LjAiIHN0cm9rZT0iIzNlZTA4YSIgc3Ryb2tlLXdpZHRoPSIzIi8+PHJlY3QgeD0iNjgiIHk9IjM2Mi4wIiB3aWR0aD0iMTYiIGhlaWdodD0iMTgiIHJ4PSIyIiBmaWxsPSIjM2VlMDhhIi8+PC9nPgo8ZyBvcGFjaXR5PSIwLjQyIj48bGluZSB4MT0iMTA4IiB5MT0iMzQzLjAiIHgyPSIxMDgiIHkyPSI0MDcuMCIgc3Ryb2tlPSIjZmY3MDYyIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSIxMDAiIHk9IjM2NS4wIiB3aWR0aD0iMTYiIGhlaWdodD0iMzAiIHJ4PSIyIiBmaWxsPSIjZmY3MDYyIi8+PC9nPgo8ZyBvcGFjaXR5PSIwLjUiPjxsaW5lIHgxPSIxNDAiIHkxPSIzMjQuMCIgeDI9IjE0MCIgeTI9IjM3OC4wIiBzdHJva2U9IiMzZWUwOGEiIHN0cm9rZS13aWR0aD0iMyIvPjxyZWN0IHg9IjEzMiIgeT0iMzM4LjAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIyMiIgcng9IjIiIGZpbGw9IiMzZWUwOGEiLz48L2c+CjxnIG9wYWNpdHk9IjAuNSI+PGxpbmUgeDE9IjE3MiIgeTE9IjMyMC4wIiB4Mj0iMTcyIiB5Mj0iMzg2LjAiIHN0cm9rZT0iIzNlZTA4YSIgc3Ryb2tlLXdpZHRoPSIzIi8+PHJlY3QgeD0iMTY0IiB5PSIzMzguMCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjM2IiByeD0iMiIgZmlsbD0iIzNlZTA4YSIvPjwvZz4KPGcgb3BhY2l0eT0iMC40MiI+PGxpbmUgeDE9IjIwNCIgeTE9IjI3My4wIiB4Mj0iMjA0IiB5Mj0iMzMzLjAiIHN0cm9rZT0iI2ZmNzA2MiIgc3Ryb2tlLXdpZHRoPSIzIi8+PHJlY3QgeD0iMTk2IiB5PSIyOTUuMCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjIwIiByeD0iMiIgZmlsbD0iI2ZmNzA2MiIvPjwvZz4KPGcgb3BhY2l0eT0iMC41Ij48bGluZSB4MT0iMjM2IiB5MT0iMjkwLjAiIHgyPSIyMzYiIHkyPSIzNDQuMCIgc3Ryb2tlPSIjM2VlMDhhIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSIyMjgiIHk9IjMwNC4wIiB3aWR0aD0iMTYiIGhlaWdodD0iMjgiIHJ4PSIyIiBmaWxsPSIjM2VlMDhhIi8+PC9nPgo8ZyBvcGFjaXR5PSIwLjUiPjxsaW5lIHgxPSIyNjgiIHkxPSIyNTkuMCIgeDI9IjI2OCIgeTI9IjMxMS4wIiBzdHJva2U9IiMzZWUwOGEiIHN0cm9rZS13aWR0aD0iMyIvPjxyZWN0IHg9IjI2MCIgeT0iMjc3LjAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjIiIGZpbGw9IiMzZWUwOGEiLz48L2c+CjxnIG9wYWNpdHk9IjAuNDIiPjxsaW5lIHgxPSIzMDAiIHkxPSIyNTUuMCIgeDI9IjMwMCIgeTI9IjMyMy4wIiBzdHJva2U9IiNmZjcwNjIiIHN0cm9rZS13aWR0aD0iMyIvPjxyZWN0IHg9IjI5MiIgeT0iMjc3LjAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIzNCIgcng9IjIiIGZpbGw9IiNmZjcwNjIiLz48L2c+CjxnIG9wYWNpdHk9IjAuNSI+PGxpbmUgeDE9IjMzMiIgeTE9IjIyMS4wIiB4Mj0iMzMyIiB5Mj0iMjc3LjAiIHN0cm9rZT0iIzNlZTA4YSIgc3Ryb2tlLXdpZHRoPSIzIi8+PHJlY3QgeD0iMzI0IiB5PSIyMzUuMCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjI0IiByeD0iMiIgZmlsbD0iIzNlZTA4YSIvPjwvZz4KPGcgb3BhY2l0eT0iMC41Ij48bGluZSB4MT0iMzY0IiB5MT0iMjIzLjAiIHgyPSIzNjQiIHkyPSIyODMuMCIgc3Ryb2tlPSIjM2VlMDhhIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSIzNTYiIHk9IjI0MS4wIiB3aWR0aD0iMTYiIGhlaWdodD0iMzAiIHJ4PSIyIiBmaWxsPSIjM2VlMDhhIi8+PC9nPgo8ZyBvcGFjaXR5PSIwLjQyIj48bGluZSB4MT0iMzk2IiB5MT0iMTk2LjAiIHgyPSIzOTYiIHkyPSIyNTQuMCIgc3Ryb2tlPSIjZmY3MDYyIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSIzODgiIHk9IjIxOC4wIiB3aWR0aD0iMTYiIGhlaWdodD0iMTgiIHJ4PSIyIiBmaWxsPSIjZmY3MDYyIi8+PC9nPgo8ZyBvcGFjaXR5PSIwLjUiPjxsaW5lIHgxPSI0MjgiIHkxPSIxOTcuMCIgeDI9IjQyOCIgeTI9IjI0OS4wIiBzdHJva2U9IiMzZWUwOGEiIHN0cm9rZS13aWR0aD0iMyIvPjxyZWN0IHg9IjQyMCIgeT0iMjExLjAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIyNiIgcng9IjIiIGZpbGw9IiMzZWUwOGEiLz48L2c+CiAgPC9nPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDExOCw5NikiPgo8dXNlIGhyZWY9IiNtayIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTQsMTQpIiBmaWxsPSIjMWMxMTA0IiBvcGFjaXR5PSIuNTUiLz4KPHVzZSBocmVmPSIjbWsiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE0LjAsMTQuMCkiIGZpbGw9InVybCgjc2lkZSkiLz4KPHVzZSBocmVmPSIjbWsiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEyLjYsMTIuNikiIGZpbGw9InVybCgjc2lkZSkiLz4KPHVzZSBocmVmPSIjbWsiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDExLjIsMTEuMikiIGZpbGw9InVybCgjc2lkZSkiLz4KPHVzZSBocmVmPSIjbWsiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDkuNzk5OTk5OTk5OTk5OTk5LDkuNzk5OTk5OTk5OTk5OTk5KSIgZmlsbD0idXJsKCNzaWRlKSIvPgo8dXNlIGhyZWY9IiNtayIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoOC4zOTk5OTk5OTk5OTk5OTksOC4zOTk5OTk5OTk5OTk5OTkpIiBmaWxsPSJ1cmwoI3NpZGUpIi8+Cjx1c2UgaHJlZj0iI21rIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg3LjAsNy4wKSIgZmlsbD0idXJsKCNzaWRlKSIvPgo8dXNlIGhyZWY9IiNtayIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNS42LDUuNikiIGZpbGw9InVybCgjc2lkZSkiLz4KPHVzZSBocmVmPSIjbWsiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQuMTk5OTk5OTk5OTk5OTk5LDQuMTk5OTk5OTk5OTk5OTk5KSIgZmlsbD0idXJsKCNzaWRlKSIvPgo8dXNlIGhyZWY9IiNtayIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMi44LDIuOCkiIGZpbGw9InVybCgjc2lkZSkiLz4KPHVzZSBocmVmPSIjbWsiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEuNCwxLjQpIiBmaWxsPSJ1cmwoI3NpZGUpIi8+CiAgICA8dXNlIGhyZWY9IiNtayIgZmlsbD0idXJsKCNmYWNlKSIvPgogIDwvZz4KICA8cmVjdCB4PSI4NiIgeT0iMjkyIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjEyNCIgcng9IjE0IiBmaWxsPSIjMDQxMjBiIiBvcGFjaXR5PSIuNiIvPgogIDx0ZXh0IHg9IjI1OCIgeT0iMzM4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI1MCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzFjMTEwNCI+TUt0cmFkZXM8L3RleHQ+CiAgPHRleHQgeD0iMjU2IiB5PSIzMzUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjUwIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSJ1cmwoI2ZhY2UpIj5NS3RyYWRlczwvdGV4dD4KICA8bGluZSB4MT0iOTYiIHkxPSIzNjgiIHgyPSIyMDYiIHkyPSIzNjgiIHN0cm9rZT0iI2Y3YjczMyIgc3Ryb2tlLW9wYWNpdHk9Ii42IiBzdHJva2Utd2lkdGg9IjEuNSIvPgogIDxsaW5lIHgxPSIzMDYiIHkxPSIzNjgiIHgyPSI0MTYiIHkyPSIzNjgiIHN0cm9rZT0iI2Y3YjczMyIgc3Ryb2tlLW9wYWNpdHk9Ii42IiBzdHJva2Utd2lkdGg9IjEuNSIvPgogIDxjaXJjbGUgY3g9IjI1NiIgY3k9IjM2OCIgcj0iMy41IiBmaWxsPSIjM2VlMDhhIi8+CiAgPHRleHQgeD0iMjU2IiB5PSI0MDIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE1IiBmb250LXdlaWdodD0iNjAwIiBsZXR0ZXItc3BhY2luZz0iNC41IiBmaWxsPSIjY2ZlNmQ5Ij5DT05TSVNURU5DWSBBTkQgR1JJTkQ8L3RleHQ+CiAgPC9nPgogIDxyZWN0IHg9IjIiIHk9IjIiIHdpZHRoPSI1MDgiIGhlaWdodD0iNTA4IiByeD0iOTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Y3YjczMyIgc3Ryb2tlLW9wYWNpdHk9Ii4yOCIgc3Ryb2tlLXdpZHRoPSIzIi8+Cjwvc3ZnPgo=" alt=""></div>
+<header class="top">
+  <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+CiAgPHRpdGxlPk1LdHJhZGVzIGxvZ288L3RpdGxlPgogIDxkZWZzPgogICAgPHJhZGlhbEdyYWRpZW50IGlkPSJiZyIgY3g9IjAuNSIgY3k9IjAuMzUiIHI9IjAuODUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMxZjg3NTgiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIwLjU1IiBzdG9wLWNvbG9yPSIjMGQ0YTMwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzA0MWExMCIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZmFjZSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZmYwYjMiLz48c3RvcCBvZmZzZXQ9IjAuNDUiIHN0b3AtY29sb3I9IiNmN2I3MzMiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNjNzdkMGEiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNpZGUiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjOGE1YTBlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjM2EyNDA2Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGcgaWQ9Im1rIj4KICAgICAgPHBvbHlnb24gcG9pbnRzPSIwLDE0MCAwLDAgMjgsMCA2NSw3MiAxMDIsMCAxMzAsMCAxMzAsMTQwIDEwNCwxNDAgMTA0LDUwIDY1LDExOCAyNiw1MCAyNiwxNDAiLz4KICAgICAgPHBvbHlnb24gcG9pbnRzPSIxNDYsMCAxNzQsMCAxNzQsNTggMjM0LDAgMjcyLDAgMjA4LDcwIDI3NiwxNDAgMjM4LDE0MCAxNzQsODIgMTc0LDE0MCAxNDYsMTQwIi8+CiAgICA8L2c+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iOTYiIGZpbGw9InVybCgjYmcpIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjU2LDI1Nikgc2NhbGUoMS4wKSB0cmFuc2xhdGUoLTI1NiwtMjU2KSI+CiAgPGc+CjxnIG9wYWNpdHk9IjAuNSI+PGxpbmUgeDE9IjQ0IiB5MT0iMzczLjAiIHgyPSI0NCIgeTI9IjQyNS4wIiBzdHJva2U9IiMzZWUwOGEiIHN0cm9rZS13aWR0aD0iMyIvPjxyZWN0IHg9IjM2IiB5PSIzODcuMCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjI2IiByeD0iMiIgZmlsbD0iIzNlZTA4YSIvPjwvZz4KPGcgb3BhY2l0eT0iMC41Ij48bGluZSB4MT0iNzYiIHkxPSIzNDQuMCIgeDI9Ijc2IiB5Mj0iMzk4LjAiIHN0cm9rZT0iIzNlZTA4YSIgc3Ryb2tlLXdpZHRoPSIzIi8+PHJlY3QgeD0iNjgiIHk9IjM2Mi4wIiB3aWR0aD0iMTYiIGhlaWdodD0iMTgiIHJ4PSIyIiBmaWxsPSIjM2VlMDhhIi8+PC9nPgo8ZyBvcGFjaXR5PSIwLjQyIj48bGluZSB4MT0iMTA4IiB5MT0iMzQzLjAiIHgyPSIxMDgiIHkyPSI0MDcuMCIgc3Ryb2tlPSIjZmY3MDYyIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSIxMDAiIHk9IjM2NS4wIiB3aWR0aD0iMTYiIGhlaWdodD0iMzAiIHJ4PSIyIiBmaWxsPSIjZmY3MDYyIi8+PC9nPgo8ZyBvcGFjaXR5PSIwLjUiPjxsaW5lIHgxPSIxNDAiIHkxPSIzMjQuMCIgeDI9IjE0MCIgeTI9IjM3OC4wIiBzdHJva2U9IiMzZWUwOGEiIHN0cm9rZS13aWR0aD0iMyIvPjxyZWN0IHg9IjEzMiIgeT0iMzM4LjAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIyMiIgcng9IjIiIGZpbGw9IiMzZWUwOGEiLz48L2c+CjxnIG9wYWNpdHk9IjAuNSI+PGxpbmUgeDE9IjE3MiIgeTE9IjMyMC4wIiB4Mj0iMTcyIiB5Mj0iMzg2LjAiIHN0cm9rZT0iIzNlZTA4YSIgc3Ryb2tlLXdpZHRoPSIzIi8+PHJlY3QgeD0iMTY0IiB5PSIzMzguMCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjM2IiByeD0iMiIgZmlsbD0iIzNlZTA4YSIvPjwvZz4KPGcgb3BhY2l0eT0iMC40MiI+PGxpbmUgeDE9IjIwNCIgeTE9IjI3My4wIiB4Mj0iMjA0IiB5Mj0iMzMzLjAiIHN0cm9rZT0iI2ZmNzA2MiIgc3Ryb2tlLXdpZHRoPSIzIi8+PHJlY3QgeD0iMTk2IiB5PSIyOTUuMCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjIwIiByeD0iMiIgZmlsbD0iI2ZmNzA2MiIvPjwvZz4KPGcgb3BhY2l0eT0iMC41Ij48bGluZSB4MT0iMjM2IiB5MT0iMjkwLjAiIHgyPSIyMzYiIHkyPSIzNDQuMCIgc3Ryb2tlPSIjM2VlMDhhIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSIyMjgiIHk9IjMwNC4wIiB3aWR0aD0iMTYiIGhlaWdodD0iMjgiIHJ4PSIyIiBmaWxsPSIjM2VlMDhhIi8+PC9nPgo8ZyBvcGFjaXR5PSIwLjUiPjxsaW5lIHgxPSIyNjgiIHkxPSIyNTkuMCIgeDI9IjI2OCIgeTI9IjMxMS4wIiBzdHJva2U9IiMzZWUwOGEiIHN0cm9rZS13aWR0aD0iMyIvPjxyZWN0IHg9IjI2MCIgeT0iMjc3LjAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjIiIGZpbGw9IiMzZWUwOGEiLz48L2c+CjxnIG9wYWNpdHk9IjAuNDIiPjxsaW5lIHgxPSIzMDAiIHkxPSIyNTUuMCIgeDI9IjMwMCIgeTI9IjMyMy4wIiBzdHJva2U9IiNmZjcwNjIiIHN0cm9rZS13aWR0aD0iMyIvPjxyZWN0IHg9IjI5MiIgeT0iMjc3LjAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIzNCIgcng9IjIiIGZpbGw9IiNmZjcwNjIiLz48L2c+CjxnIG9wYWNpdHk9IjAuNSI+PGxpbmUgeDE9IjMzMiIgeTE9IjIyMS4wIiB4Mj0iMzMyIiB5Mj0iMjc3LjAiIHN0cm9rZT0iIzNlZTA4YSIgc3Ryb2tlLXdpZHRoPSIzIi8+PHJlY3QgeD0iMzI0IiB5PSIyMzUuMCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjI0IiByeD0iMiIgZmlsbD0iIzNlZTA4YSIvPjwvZz4KPGcgb3BhY2l0eT0iMC41Ij48bGluZSB4MT0iMzY0IiB5MT0iMjIzLjAiIHgyPSIzNjQiIHkyPSIyODMuMCIgc3Ryb2tlPSIjM2VlMDhhIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSIzNTYiIHk9IjI0MS4wIiB3aWR0aD0iMTYiIGhlaWdodD0iMzAiIHJ4PSIyIiBmaWxsPSIjM2VlMDhhIi8+PC9nPgo8ZyBvcGFjaXR5PSIwLjQyIj48bGluZSB4MT0iMzk2IiB5MT0iMTk2LjAiIHgyPSIzOTYiIHkyPSIyNTQuMCIgc3Ryb2tlPSIjZmY3MDYyIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSIzODgiIHk9IjIxOC4wIiB3aWR0aD0iMTYiIGhlaWdodD0iMTgiIHJ4PSIyIiBmaWxsPSIjZmY3MDYyIi8+PC9nPgo8ZyBvcGFjaXR5PSIwLjUiPjxsaW5lIHgxPSI0MjgiIHkxPSIxOTcuMCIgeDI9IjQyOCIgeTI9IjI0OS4wIiBzdHJva2U9IiMzZWUwOGEiIHN0cm9rZS13aWR0aD0iMyIvPjxyZWN0IHg9IjQyMCIgeT0iMjExLjAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIyNiIgcng9IjIiIGZpbGw9IiMzZWUwOGEiLz48L2c+CiAgPC9nPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDExOCwxNTApIj4KPHVzZSBocmVmPSIjbWsiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE0LDE0KSIgZmlsbD0iIzFjMTEwNCIgb3BhY2l0eT0iLjU1Ii8+Cjx1c2UgaHJlZj0iI21rIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNC4wLDE0LjApIiBmaWxsPSJ1cmwoI3NpZGUpIi8+Cjx1c2UgaHJlZj0iI21rIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMi42LDEyLjYpIiBmaWxsPSJ1cmwoI3NpZGUpIi8+Cjx1c2UgaHJlZj0iI21rIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMS4yLDExLjIpIiBmaWxsPSJ1cmwoI3NpZGUpIi8+Cjx1c2UgaHJlZj0iI21rIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg5Ljc5OTk5OTk5OTk5OTk5OSw5Ljc5OTk5OTk5OTk5OTk5OSkiIGZpbGw9InVybCgjc2lkZSkiLz4KPHVzZSBocmVmPSIjbWsiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDguMzk5OTk5OTk5OTk5OTk5LDguMzk5OTk5OTk5OTk5OTk5KSIgZmlsbD0idXJsKCNzaWRlKSIvPgo8dXNlIGhyZWY9IiNtayIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNy4wLDcuMCkiIGZpbGw9InVybCgjc2lkZSkiLz4KPHVzZSBocmVmPSIjbWsiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDUuNiw1LjYpIiBmaWxsPSJ1cmwoI3NpZGUpIi8+Cjx1c2UgaHJlZj0iI21rIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0LjE5OTk5OTk5OTk5OTk5OSw0LjE5OTk5OTk5OTk5OTk5OSkiIGZpbGw9InVybCgjc2lkZSkiLz4KPHVzZSBocmVmPSIjbWsiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIuOCwyLjgpIiBmaWxsPSJ1cmwoI3NpZGUpIi8+Cjx1c2UgaHJlZj0iI21rIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxLjQsMS40KSIgZmlsbD0idXJsKCNzaWRlKSIvPgogICAgPHVzZSBocmVmPSIjbWsiIGZpbGw9InVybCgjZmFjZSkiLz4KICA8L2c+CiAgPC9nPgogIDxyZWN0IHg9IjIiIHk9IjIiIHdpZHRoPSI1MDgiIGhlaWdodD0iNTA4IiByeD0iOTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Y3YjczMyIgc3Ryb2tlLW9wYWNpdHk9Ii4yOCIgc3Ryb2tlLXdpZHRoPSIzIi8+Cjwvc3ZnPgo=" alt="MKtrades logo">
+  <div class="brand"><b><span>MK</span>trades Journal</b><small>Consistency and grind</small></div>
+  <a class="icon-btn" href="#setup" aria-label="Setup and backup"><svg viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg></a>
+</header>
+<main id="view"></main>
+<nav class="nav" aria-label="Main">
+  <a href="#home" data-n="home"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg>Home</a>
+  <a href="#trades" data-n="trades"><svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>Trades</a>
+  <a href="#add" data-n="add" class="add"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>Add</a>
+  <a href="#daily" data-n="daily"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg>Daily</a>
+  <a href="#review" data-n="review"><svg viewBox="0 0 24 24"><path d="M4 20V11M10 20V4M16 20v-6M22 20H2"/></svg>Review</a>
+</nav>
+<div id="toast" class="toast" hidden role="status"></div>
+<script>
+(function(){
+'use strict';
+var $=function(s,el){return (el||document).querySelector(s)};
+var $$=function(s,el){return Array.prototype.slice.call((el||document).querySelectorAll(s))};
+var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})};
+var p2=function(n){return String(n).padStart(2,'0')};
+var uid=function(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6)};
+var num=function(v){if(v===''||v==null)return null;var n=parseFloat(String(v).replace(',','.'));return isFinite(n)?n:null};
+var ds=function(d){return d.getFullYear()+'-'+p2(d.getMonth()+1)+'-'+p2(d.getDate())};
+var todayStr=function(){return ds(new Date())};
+var parseD=function(s){var a=s.split('-');return new Date(+a[0],+a[1]-1,+a[2])};
+var addDays=function(s,n){var d=parseD(s);d.setDate(d.getDate()+n);return ds(d)};
+var weekStart=function(s){var d=parseD(s);var w=(d.getDay()+6)%7;d.setDate(d.getDate()-w);return ds(d)};
+var MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+var DOW=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+var fmtDate=function(s){var d=parseD(s);return DOW[d.getDay()]+' '+d.getDate()+' '+MON[d.getMonth()]};
+var isoWeek=function(s){var d=parseD(s);d.setHours(0,0,0,0);d.setDate(d.getDate()+3-((d.getDay()+6)%7));var w1=new Date(d.getFullYear(),0,4);return 1+Math.round(((d-w1)/86400000-3+((w1.getDay()+6)%7))/7)};
+
+var PAIRS=['EUR/USD','GBP/USD','XAU/USD','XAG/USD'];
+var SHORT={'EUR/USD':'EURUSD','GBP/USD':'GBPUSD','XAU/USD':'Gold','XAG/USD':'Silver'};
+var GROUP={'EUR/USD':'Forex','GBP/USD':'Forex','XAU/USD':'Metals','XAG/USD':'Metals'};
+var DEC={'EUR/USD':5,'GBP/USD':5,'XAU/USD':2,'XAG/USD':3};
+var MODELS=['Daily to H1','H4 to M15','H1 to M1'];
+var SESSIONS=['Asia','London','New York','Other'];
+var MISTAKES=['None','Early entry','Late entry','Moved stop','Skipped confirmation','Against weekly direction','Oversized','Exited early','Chased','Overtraded'];
+var EMOTIONS=['Calm','Confident','Hesitant','FOMO','Revenge','Bored'];
+var CONTRACT={'EUR/USD':100000,'GBP/USD':100000,'XAU/USD':100,'XAG/USD':5000};
+
+var state={trades:[],daily:{},weekly:{},settings:null,ui:{period:'all',pair:'All',daily:todayStr(),week:weekStart(todayStr())}};
+var mem={};
+var store={
+  get:function(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return mem[k]!==undefined?mem[k]:d}},
+  set:function(k,v){mem[k]=v;try{localStorage.setItem(k,JSON.stringify(v));return true}catch(e){return false}}
+};
+function load(){
+  var d=store.get('mk_data',null)||{};
+  var s=d.settings||{};
+  state.settings={balance:s.balance!=null?s.balance:10000,risk:s.risk!=null?s.risk:1,contract:Object.assign({},CONTRACT,s.contract||{})};
+  state.trades=d.trades||[];state.daily=d.daily||{};state.weekly=d.weekly||{};
+}
+function save(){if(!store.set('mk_data',{v:1,settings:state.settings,trades:state.trades,daily:state.daily,weekly:state.weekly}))toast('Browser storage is blocked. Export a backup before closing.')}
+var tt;
+function toast(m){var t=$('#toast');t.textContent=m;t.hidden=false;clearTimeout(tt);tt=setTimeout(function(){t.hidden=true},2400)}
+
+var idb={db:null,mem:{},
+  open:function(){var me=this;return new Promise(function(res){try{var rq=indexedDB.open('mk_img',1);rq.onupgradeneeded=function(){rq.result.createObjectStore('i')};rq.onsuccess=function(){me.db=rq.result;res(true)};rq.onerror=function(){res(false)}}catch(e){res(false)}})},
+  put:function(k,v){var me=this;me.mem[k]=v;return new Promise(function(res){if(!me.db)return res();try{var tx=me.db.transaction('i','readwrite');tx.objectStore('i').put(v,k);tx.oncomplete=res;tx.onerror=res}catch(e){res()}})},
+  get:function(k){var me=this;return new Promise(function(res){if(!me.db)return res(me.mem[k]||null);try{var rq=me.db.transaction('i').objectStore('i').get(k);rq.onsuccess=function(){res(rq.result||me.mem[k]||null)};rq.onerror=function(){res(me.mem[k]||null)}}catch(e){res(me.mem[k]||null)}})},
+  del:function(k){var me=this;delete me.mem[k];return new Promise(function(res){if(!me.db)return res();try{var tx=me.db.transaction('i','readwrite');tx.objectStore('i').delete(k);tx.oncomplete=res;tx.onerror=res}catch(e){res()}})}
+};
+function shrink(file){return new Promise(function(res,rej){var fr=new FileReader();fr.onload=function(){var im=new Image();im.onload=function(){var m=1000,s=Math.min(1,m/Math.max(im.width,im.height));var c=document.createElement('canvas');c.width=Math.round(im.width*s);c.height=Math.round(im.height*s);c.getContext('2d').drawImage(im,0,0,c.width,c.height);res(c.toDataURL('image/jpeg',0.72))};im.onerror=rej;im.src=fr.result};fr.onerror=rej;fr.readAsDataURL(file)})}
+
+function rOf(t){var e=num(t.entry),s=num(t.sl),x=num(t.exit);if(e==null||s==null||x==null||e===s)return null;return (x-e)/(e-s)}
+var R=function(x){return (x>0?'+':x<0?'-':'')+Math.abs(x).toFixed(2)+'R'};
+var cls=function(x){return x>0.004?'up':x<-0.004?'down':''};
+function stats(list){
+  var cl=list.filter(function(t){return t.r!=null}).sort(function(a,b){return (a.date+(a.time||'')).localeCompare(b.date+(b.time||''))});
+  var n=cl.length,net=0,gw=0,gl=0,w=0,l=0,be=0,peak=0,dd=0,curve=[0],ok=0;
+  cl.forEach(function(t){net+=t.r;if(t.r>0){w++;gw+=t.r}else if(t.r<0){l++;gl+=-t.r}else be++;if(t.rules==='Yes')ok++;curve.push(net);peak=Math.max(peak,net);dd=Math.max(dd,peak-net)});
+  return {n:n,w:w,l:l,be:be,net:net,win:n?w/n:0,exp:n?net/n:0,pf:gl?gw/gl:(gw?Infinity:0),dd:dd,curve:curve,avgW:w?gw/w:0,avgL:l?gl/l:0,comp:n?ok/n:0};
+}
+function brk(title,list,keyFn,keys){
+  var rows=keys.map(function(k){var s=stats(list.filter(function(t){return t.r!=null&&keyFn(t)===k}));return {k:k,s:s}}).filter(function(x){return x.s.n});
+  if(!rows.length)return '';
+  var mx=Math.max.apply(null,rows.map(function(x){return Math.abs(x.s.net)}).concat([0.01]));
+  return '<section class="card"><h3>'+title+'</h3>'+rows.map(function(x){return '<div class="brow"><div class="bl">'+esc(x.k)+'<small>'+x.s.n+' trade'+(x.s.n>1?'s':'')+' · '+Math.round(x.s.win*100)+'% win</small></div><div class="bbar"><i class="'+(x.s.net<0?'down':'up')+'" style="width:'+Math.max(4,Math.abs(x.s.net)/mx*100)+'%"></i></div><b class="mono '+cls(x.s.net)+'">'+R(x.s.net)+'</b></div>'}).join('')+'</section>';
+}
+function curveSvg(c){
+  if(c.length<3)return '<p class="note">Close two trades to see your equity curve.</p>';
+  var W=340,H=150,pl=38,pr=8,pt=10,pb=20;
+  var mn=Math.min.apply(null,c.concat([0])),mx=Math.max.apply(null,c.concat([0])),sp=(mx-mn)||1;
+  var x=function(i){return pl+(W-pl-pr)*i/(c.length-1)},y=function(v){return pt+(H-pt-pb)*(1-(v-mn)/sp)};
+  var pts=c.map(function(v,i){return x(i).toFixed(1)+','+y(v).toFixed(1)}).join(' ');
+  var last=c[c.length-1],col=last>=0?'var(--up)':'var(--down)';
+  var area='M'+x(0).toFixed(1)+','+y(0).toFixed(1)+' L'+pts.replace(/ /g,' L')+' L'+x(c.length-1).toFixed(1)+','+y(0).toFixed(1)+' Z';
+  var ticks=[mn,0,mx].filter(function(v,i,a){return a.indexOf(v)===i});
+  var g=ticks.map(function(v){return '<line x1="'+pl+'" x2="'+(W-pr)+'" y1="'+y(v).toFixed(1)+'" y2="'+y(v).toFixed(1)+'" style="stroke:var(--line)" stroke-dasharray="'+(v===0?'0':'3 4')+'"/><text x="'+(pl-6)+'" y="'+(y(v)+4).toFixed(1)+'" text-anchor="end">'+(v>0?'+':'')+v.toFixed(1)+'</text>'}).join('');
+  return '<svg class="curve" viewBox="0 0 '+W+' '+H+'" width="100%" role="img" aria-label="Equity curve in R, ending at '+R(last)+'">'+g+'<path d="'+area+'" style="fill:'+col+'" opacity=".14"/><polyline points="'+pts+'" fill="none" style="stroke:'+col+'" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="'+x(c.length-1).toFixed(1)+'" cy="'+y(last).toFixed(1)+'" r="4" style="fill:'+col+'"/><text x="'+pl+'" y="'+(H-4)+'">trade 1</text><text x="'+(W-pr)+'" y="'+(H-4)+'" text-anchor="end">trade '+(c.length-1)+'</text></svg>';
+}
+var alignKey=function(t){return t.aligned==='Yes'?'Aligned with weekly':t.aligned==='No'?'Not aligned':null};
+var ALIGN_KEYS=['Aligned with weekly','Not aligned'];
+
+function emptyCard(){return '<section class="card empty"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+CiAgPHRpdGxlPk1LdHJhZGVzIGxvZ288L3RpdGxlPgogIDxkZWZzPgogICAgPHJhZGlhbEdyYWRpZW50IGlkPSJiZyIgY3g9IjAuNSIgY3k9IjAuMzUiIHI9IjAuODUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMxZjg3NTgiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIwLjU1IiBzdG9wLWNvbG9yPSIjMGQ0YTMwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzA0MWExMCIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZmFjZSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZmYwYjMiLz48c3RvcCBvZmZzZXQ9IjAuNDUiIHN0b3AtY29sb3I9IiNmN2I3MzMiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNjNzdkMGEiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNpZGUiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjOGE1YTBlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjM2EyNDA2Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGcgaWQ9Im1rIj4KICAgICAgPHBvbHlnb24gcG9pbnRzPSIwLDE0MCAwLDAgMjgsMCA2NSw3MiAxMDIsMCAxMzAsMCAxMzAsMTQwIDEwNCwxNDAgMTA0LDUwIDY1LDExOCAyNiw1MCAyNiwxNDAiLz4KICAgICAgPHBvbHlnb24gcG9pbnRzPSIxNDYsMCAxNzQsMCAxNzQsNTggMjM0LDAgMjcyLDAgMjA4LDcwIDI3NiwxNDAgMjM4LDE0MCAxNzQsODIgMTc0LDE0MCAxNDYsMTQwIi8+CiAgICA8L2c+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iOTYiIGZpbGw9InVybCgjYmcpIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjU2LDI1Nikgc2NhbGUoMS4wKSB0cmFuc2xhdGUoLTI1NiwtMjU2KSI+CiAgPGc+CjxnIG9wYWNpdHk9IjAuNSI+PGxpbmUgeDE9IjQ0IiB5MT0iMzczLjAiIHgyPSI0NCIgeTI9IjQyNS4wIiBzdHJva2U9IiMzZWUwOGEiIHN0cm9rZS13aWR0aD0iMyIvPjxyZWN0IHg9IjM2IiB5PSIzODcuMCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjI2IiByeD0iMiIgZmlsbD0iIzNlZTA4YSIvPjwvZz4KPGcgb3BhY2l0eT0iMC41Ij48bGluZSB4MT0iNzYiIHkxPSIzNDQuMCIgeDI9Ijc2IiB5Mj0iMzk4LjAiIHN0cm9rZT0iIzNlZTA4YSIgc3Ryb2tlLXdpZHRoPSIzIi8+PHJlY3QgeD0iNjgiIHk9IjM2Mi4wIiB3aWR0aD0iMTYiIGhlaWdodD0iMTgiIHJ4PSIyIiBmaWxsPSIjM2VlMDhhIi8+PC9nPgo8ZyBvcGFjaXR5PSIwLjQyIj48bGluZSB4MT0iMTA4IiB5MT0iMzQzLjAiIHgyPSIxMDgiIHkyPSI0MDcuMCIgc3Ryb2tlPSIjZmY3MDYyIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSIxMDAiIHk9IjM2NS4wIiB3aWR0aD0iMTYiIGhlaWdodD0iMzAiIHJ4PSIyIiBmaWxsPSIjZmY3MDYyIi8+PC9nPgo8ZyBvcGFjaXR5PSIwLjUiPjxsaW5lIHgxPSIxNDAiIHkxPSIzMjQuMCIgeDI9IjE0MCIgeTI9IjM3OC4wIiBzdHJva2U9IiMzZWUwOGEiIHN0cm9rZS13aWR0aD0iMyIvPjxyZWN0IHg9IjEzMiIgeT0iMzM4LjAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIyMiIgcng9IjIiIGZpbGw9IiMzZWUwOGEiLz48L2c+CjxnIG9wYWNpdHk9IjAuNSI+PGxpbmUgeDE9IjE3MiIgeTE9IjMyMC4wIiB4Mj0iMTcyIiB5Mj0iMzg2LjAiIHN0cm9rZT0iIzNlZTA4YSIgc3Ryb2tlLXdpZHRoPSIzIi8+PHJlY3QgeD0iMTY0IiB5PSIzMzguMCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjM2IiByeD0iMiIgZmlsbD0iIzNlZTA4YSIvPjwvZz4KPGcgb3BhY2l0eT0iMC40MiI+PGxpbmUgeDE9IjIwNCIgeTE9IjI3My4wIiB4Mj0iMjA0IiB5Mj0iMzMzLjAiIHN0cm9rZT0iI2ZmNzA2MiIgc3Ryb2tlLXdpZHRoPSIzIi8+PHJlY3QgeD0iMTk2IiB5PSIyOTUuMCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjIwIiByeD0iMiIgZmlsbD0iI2ZmNzA2MiIvPjwvZz4KPGcgb3BhY2l0eT0iMC41Ij48bGluZSB4MT0iMjM2IiB5MT0iMjkwLjAiIHgyPSIyMzYiIHkyPSIzNDQuMCIgc3Ryb2tlPSIjM2VlMDhhIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSIyMjgiIHk9IjMwNC4wIiB3aWR0aD0iMTYiIGhlaWdodD0iMjgiIHJ4PSIyIiBmaWxsPSIjM2VlMDhhIi8+PC9nPgo8ZyBvcGFjaXR5PSIwLjUiPjxsaW5lIHgxPSIyNjgiIHkxPSIyNTkuMCIgeDI9IjI2OCIgeTI9IjMxMS4wIiBzdHJva2U9IiMzZWUwOGEiIHN0cm9rZS13aWR0aD0iMyIvPjxyZWN0IHg9IjI2MCIgeT0iMjc3LjAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjIiIGZpbGw9IiMzZWUwOGEiLz48L2c+CjxnIG9wYWNpdHk9IjAuNDIiPjxsaW5lIHgxPSIzMDAiIHkxPSIyNTUuMCIgeDI9IjMwMCIgeTI9IjMyMy4wIiBzdHJva2U9IiNmZjcwNjIiIHN0cm9rZS13aWR0aD0iMyIvPjxyZWN0IHg9IjI5MiIgeT0iMjc3LjAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIzNCIgcng9IjIiIGZpbGw9IiNmZjcwNjIiLz48L2c+CjxnIG9wYWNpdHk9IjAuNSI+PGxpbmUgeDE9IjMzMiIgeTE9IjIyMS4wIiB4Mj0iMzMyIiB5Mj0iMjc3LjAiIHN0cm9rZT0iIzNlZTA4YSIgc3Ryb2tlLXdpZHRoPSIzIi8+PHJlY3QgeD0iMzI0IiB5PSIyMzUuMCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjI0IiByeD0iMiIgZmlsbD0iIzNlZTA4YSIvPjwvZz4KPGcgb3BhY2l0eT0iMC41Ij48bGluZSB4MT0iMzY0IiB5MT0iMjIzLjAiIHgyPSIzNjQiIHkyPSIyODMuMCIgc3Ryb2tlPSIjM2VlMDhhIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSIzNTYiIHk9IjI0MS4wIiB3aWR0aD0iMTYiIGhlaWdodD0iMzAiIHJ4PSIyIiBmaWxsPSIjM2VlMDhhIi8+PC9nPgo8ZyBvcGFjaXR5PSIwLjQyIj48bGluZSB4MT0iMzk2IiB5MT0iMTk2LjAiIHgyPSIzOTYiIHkyPSIyNTQuMCIgc3Ryb2tlPSIjZmY3MDYyIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSIzODgiIHk9IjIxOC4wIiB3aWR0aD0iMTYiIGhlaWdodD0iMTgiIHJ4PSIyIiBmaWxsPSIjZmY3MDYyIi8+PC9nPgo8ZyBvcGFjaXR5PSIwLjUiPjxsaW5lIHgxPSI0MjgiIHkxPSIxOTcuMCIgeDI9IjQyOCIgeTI9IjI0OS4wIiBzdHJva2U9IiMzZWUwOGEiIHN0cm9rZS13aWR0aD0iMyIvPjxyZWN0IHg9IjQyMCIgeT0iMjExLjAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIyNiIgcng9IjIiIGZpbGw9IiMzZWUwOGEiLz48L2c+CiAgPC9nPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDExOCwxNTApIj4KPHVzZSBocmVmPSIjbWsiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE0LDE0KSIgZmlsbD0iIzFjMTEwNCIgb3BhY2l0eT0iLjU1Ii8+Cjx1c2UgaHJlZj0iI21rIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNC4wLDE0LjApIiBmaWxsPSJ1cmwoI3NpZGUpIi8+Cjx1c2UgaHJlZj0iI21rIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMi42LDEyLjYpIiBmaWxsPSJ1cmwoI3NpZGUpIi8+Cjx1c2UgaHJlZj0iI21rIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMS4yLDExLjIpIiBmaWxsPSJ1cmwoI3NpZGUpIi8+Cjx1c2UgaHJlZj0iI21rIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg5Ljc5OTk5OTk5OTk5OTk5OSw5Ljc5OTk5OTk5OTk5OTk5OSkiIGZpbGw9InVybCgjc2lkZSkiLz4KPHVzZSBocmVmPSIjbWsiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDguMzk5OTk5OTk5OTk5OTk5LDguMzk5OTk5OTk5OTk5OTk5KSIgZmlsbD0idXJsKCNzaWRlKSIvPgo8dXNlIGhyZWY9IiNtayIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNy4wLDcuMCkiIGZpbGw9InVybCgjc2lkZSkiLz4KPHVzZSBocmVmPSIjbWsiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDUuNiw1LjYpIiBmaWxsPSJ1cmwoI3NpZGUpIi8+Cjx1c2UgaHJlZj0iI21rIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0LjE5OTk5OTk5OTk5OTk5OSw0LjE5OTk5OTk5OTk5OTk5OSkiIGZpbGw9InVybCgjc2lkZSkiLz4KPHVzZSBocmVmPSIjbWsiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIuOCwyLjgpIiBmaWxsPSJ1cmwoI3NpZGUpIi8+Cjx1c2UgaHJlZj0iI21rIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxLjQsMS40KSIgZmlsbD0idXJsKCNzaWRlKSIvPgogICAgPHVzZSBocmVmPSIjbWsiIGZpbGw9InVybCgjZmFjZSkiLz4KICA8L2c+CiAgPC9nPgogIDxyZWN0IHg9IjIiIHk9IjIiIHdpZHRoPSI1MDgiIGhlaWdodD0iNTA4IiByeD0iOTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Y3YjczMyIgc3Ryb2tlLW9wYWNpdHk9Ii4yOCIgc3Ryb2tlLXdpZHRoPSIzIi8+Cjwvc3ZnPgo=" alt=""><h2>Log your first trade</h2><p>Every trade you add builds your equity curve, win rate, and expectancy.</p><a class="btn pri full" href="#add">Add a trade</a><div style="height:10px"></div><button class="btn full" id="load-sample">Preview with sample trades</button></section>'}
+function wireEmpty(){var b=$('#load-sample');if(b)b.onclick=function(){addSamples();route()}}
+function periodCut(){var p=state.ui.period;if(p==='30d')return addDays(todayStr(),-30);if(p==='week')return weekStart(todayStr());return '0000'}
+
+function vHome(){
+  var all=state.trades;
+  if(!all.length){setTimeout(wireEmpty,0);return emptyCard()}
+  var cut=periodCut(),list=all.filter(function(t){return t.date>=cut}),s=stats(list);
+  var open=list.filter(function(t){return t.r==null}).length;
+  var smp=all.some(function(t){return t.sample});
+  var chips=[['all','All time'],['30d','30 days'],['week','This week']].map(function(c){return '<button class="chip'+(state.ui.period===c[0]?' on':'')+'" data-p="'+c[0]+'">'+c[1]+'</button>'}).join('');
+  var h='<div class="chips" id="per">'+chips+'</div>';
+  if(smp)h+='<div class="warnbox">You are looking at sample trades. <a href="#setup" class="gold">Remove them in Setup</a> before logging real ones.</div>';
+  if(!s.n){return h+'<section class="card"><p class="muted">No closed trades in this period.</p></section>'}
+  h+='<section class="tiles g2"><div class="t"><small>Net result</small><b class="'+cls(s.net)+'">'+R(s.net)+'</b></div><div class="t"><small>Win rate</small><b>'+Math.round(s.win*100)+'%</b></div><div class="t"><small>Expectancy</small><b class="'+cls(s.exp)+'">'+R(s.exp)+'</b></div><div class="t"><small>Profit factor</small><b>'+(s.pf===Infinity?'∞':s.pf.toFixed(2))+'</b></div></section>';
+  h+='<section class="card"><h3>Equity curve in R</h3>'+curveSvg(s.curve)+'</section>';
+  h+='<section class="card"><h3>Quality</h3><div class="kv"><span>Rule compliance</span><span class="mono">'+Math.round(s.comp*100)+'%</span></div><div class="kv"><span>Max drawdown</span><span class="mono down">-'+s.dd.toFixed(2)+'R</span></div><div class="kv"><span>Average win / loss</span><span class="mono">+'+s.avgW.toFixed(2)+'R / -'+s.avgL.toFixed(2)+'R</span></div><div class="kv"><span>Closed / open</span><span class="mono">'+s.n+' / '+open+'</span></div></section>';
+  h+=brk('By pair',list,function(t){return t.pair},PAIRS);
+  h+=brk('By timeframe model',list,function(t){return t.model},MODELS);
+  h+=brk('Weekly direction',list,alignKey,ALIGN_KEYS);
+  h+=brk('Correlated pair check',list,function(t){return t.corr},['Confirmed','Diverged','Not checked']);
+  return h;
+}
+function wireHome(){$$('#per .chip').forEach(function(b){b.onclick=function(){state.ui.period=b.dataset.p;route()}})}
+
+function vTrades(){
+  var all=state.trades;
+  if(!all.length){setTimeout(wireEmpty,0);return '<h1>Trades</h1>'+emptyCard()}
+  var f=state.ui.pair;
+  var chips=['All'].concat(PAIRS).map(function(p){return '<button class="chip'+(f===p?' on':'')+'" data-f="'+p+'">'+(p==='All'?'All':SHORT[p])+'</button>'}).join('');
+  var list=all.filter(function(t){return f==='All'||t.pair===f}).sort(function(a,b){return (b.date+(b.time||'')).localeCompare(a.date+(a.time||''))});
+  var h='<h1>Trades</h1><div class="chips" id="pf">'+chips+'</div><section class="card">';
+  h+=list.length?list.map(function(t){
+    var r=t.r==null?'<span class="pill open">Open</span>':'<b class="mono '+cls(t.r)+'">'+R(t.r)+'</b>';
+    return '<a class="row" href="#trade-'+t.id+'"><div class="l"><b>'+esc(SHORT[t.pair]||t.pair)+'<span class="pill '+(t.dir==='Buy'?'buy':'sell')+'">'+esc(t.dir)+'</span>'+(t.sample?'<span class="pill smp">Sample</span>':'')+'</b><small>'+fmtDate(t.date)+' · '+esc(t.model)+' · '+esc(t.session)+'</small></div><div class="r">'+r+'<div><span class="grade">'+esc(t.grade||'-')+'</span></div></div></a>'}).join(''):'<p class="muted">No trades for this pair yet.</p>';
+  return h+'</section>';
+}
+function wireTrades(){$$('#pf .chip').forEach(function(b){b.onclick=function(){state.ui.pair=b.dataset.f;route()}})}
+
+function vTrade(id){
+  var t=state.trades.filter(function(x){return x.id===id})[0];
+  if(!t)return '<h1>Trade not found</h1><a class="btn full" href="#trades">Back to trades</a>';
+  var kv=function(k,v){return (v===''||v==null)?'':'<div class="kv"><span>'+k+'</span><span>'+esc(v)+'</span></div>'};
+  var dc=DEC[t.pair]||5,f=function(v){return v==null||v===''?'':Number(v).toFixed(dc)};
+  var h='<a class="muted" href="#trades">← All trades</a><section class="card"><h2>'+esc(t.pair)+'<span class="pill '+(t.dir==='Buy'?'buy':'sell')+'">'+esc(t.dir)+'</span>'+(t.sample?'<span class="pill smp">Sample</span>':'')+'</h2><div class="mono" style="font-size:34px;margin-top:6px"><span class="'+(t.r==null?'gold':cls(t.r))+'">'+(t.r==null?'Open':R(t.r))+'</span></div><p class="note">'+fmtDate(t.date)+(t.time?' · '+esc(t.time):'')+'</p></section>';
+  h+='<section class="card"><h3>Setup</h3>'+kv('Model',t.model)+kv('Session',t.session)+kv('Weekly direction',t.weekly)+kv('Aligned with weekly',t.aligned)+kv('Daily bias',t.dailyBias)+kv('Correlated pair',t.corr)+kv('Setup',t.setup)+'</section>';
+  h+='<section class="card"><h3>Execution</h3>'+kv('Entry',f(t.entry))+kv('Stop loss',f(t.sl))+kv('Take profit',f(t.tp))+kv('Exit',f(t.exit))+kv('Risk',t.riskPct!=null?t.riskPct+'%':'')+kv('Lots',t.lots)+kv('P/L',t.pnl!=null&&t.pnl!==''?'$'+t.pnl:'')+'</section>';
+  h+='<section class="card"><h3>Review</h3>'+kv('Grade',t.grade)+kv('Followed rules',t.rules)+kv('Mistake',t.mistake)+kv('Emotion',t.emotion)+kv('Notes',t.notes)+'</section>';
+  if(t.img)h+='<section class="card"><h3>Screenshot</h3><img class="shot" id="shot" alt="Trade screenshot"></section>';
+  h+='<div class="g2"><a class="btn" href="#edit-'+t.id+'">Edit</a><button class="btn warn" id="del">Delete</button></div>';
+  setTimeout(function(){
+    if(t.img)idb.get(t.id).then(function(d){var im=$('#shot');if(im&&d)im.src=d});
+    var b=$('#del'),armed=false;if(b)b.onclick=function(){if(!armed){armed=true;b.textContent='Tap again to delete';return}
+      state.trades=state.trades.filter(function(x){return x.id!==t.id});if(t.img)idb.del(t.id);save();toast('Trade deleted');location.hash='#trades'}
+  },0);
+  return h;
+}
+
+var draft=null,draftImg=undefined;
+function newDraft(){var n=new Date();return {id:null,date:todayStr(),time:p2(n.getHours())+':'+p2(n.getMinutes()),pair:'EUR/USD',dir:'Buy',model:'H4 to M15',session:'London',weekly:'',aligned:'',alignedTouched:false,dailyBias:'',corr:'Not checked',setup:'',entry:'',sl:'',tp:'',exit:'',riskPct:String(state.settings.risk),lots:'',r:'',rManual:false,pnl:'',grade:'A',mistake:'None',emotion:'Calm',rules:'Yes',notes:'',img:false}}
+function toDraft(t){var d=newDraft();Object.keys(t).forEach(function(k){if(t[k]!=null)d[k]=t[k]});['entry','sl','tp','exit','riskPct','lots','pnl'].forEach(function(k){d[k]=t[k]!=null?String(t[k]):''});d.r=t.r!=null?String(Math.round(t.r*100)/100):'';d.rManual=false;d.alignedTouched=true;return d}
+function opts(list,val){return list.map(function(o){return '<option'+(o===val?' selected':'')+'>'+esc(o)+'</option>'}).join('')}
+function seg(f,list,val){return '<div class="seg" data-seg="'+f+'" role="group">'+list.map(function(o){return '<button type="button" data-v="'+esc(o)+'" class="'+(val===o?'on':'')+'">'+esc(o)+'</button>'}).join('')+'</div>'}
+function field(label,inner){return '<div class="fld"><span>'+label+'</span>'+inner+'</div>'}
+function inp(f,label,ph,mono){return '<label>'+label+'<input data-f="'+f+'" id="f-'+f+'" type="text" inputmode="decimal" autocomplete="off" placeholder="'+(ph||'')+'" class="'+(mono===false?'':'mono')+'" value="'+esc(draft[f])+'"></label>'}
+
+function vAdd(editId){
+  var t=editId?state.trades.filter(function(x){return x.id===editId})[0]:null;
+  if(editId&&!t)return '<h1>Trade not found</h1><a class="btn full" href="#trades">Back to trades</a>';
+  draft=t?toDraft(t):newDraft();draftImg=undefined;
+  var d=draft;
+  var h='<h1>'+(t?'Edit trade':'New trade')+'</h1>';
+  h+='<section class="card stack"><h3>Setup</h3><div class="g2">'+field('Pair','<select data-f="pair" id="f-pair">'+opts(PAIRS,d.pair)+'</select>')+field('Direction',seg('dir',['Buy','Sell'],d.dir))+'</div>'
+    +'<div class="g2">'+field('Model','<select data-f="model" id="f-model">'+opts(MODELS,d.model)+'</select>')+field('Session','<select data-f="session" id="f-session">'+opts(SESSIONS,d.session)+'</select>')+'</div>'
+    +'<div class="g2"><label>Date<input data-f="date" id="f-date" type="date" value="'+esc(d.date)+'"></label><label>Time<input data-f="time" id="f-time" type="time" value="'+esc(d.time)+'"></label></div>'
+    +field('Liquidity or setup (what you traded)','<input data-f="setup" id="f-setup" type="text" placeholder="Swept Asia low, M5 FVG entry" value="'+esc(d.setup)+'">')+'</section>';
+  h+='<section class="card stack"><h3>Context</h3>'+field('Weekly direction',seg('weekly',['Bullish','Bearish','Neutral'],d.weekly))+field('Aligned with weekly',seg('aligned',['Yes','No'],d.aligned))
+    +'<div class="g2">'+field('Daily bias','<select data-f="dailyBias" id="f-dailyBias"><option value="">Not set</option>'+opts(['Bullish','Bearish','Neutral'],d.dailyBias)+'</select>')+field('Correlated pair','<select data-f="corr" id="f-corr">'+opts(['Confirmed','Diverged','Not checked'],d.corr)+'</select>')+'</div>'
+    +'<p class="note" id="corr-note"></p></section>';
+  h+='<section class="card stack"><h3>Execution</h3><div class="g2">'+inp('entry','Entry','')+inp('sl','Stop loss','')+inp('tp','Take profit','')+inp('exit','Exit price','')+'</div></section>';
+  h+='<details class="card" open id="calc"><summary>Position size</summary><div class="stack"><div class="g2"><label>Balance ($)<input id="c-bal" type="text" inputmode="decimal" class="mono" value="'+esc(state.settings.balance)+'"></label><label>Risk %<input id="f-riskPct" data-f="riskPct" type="text" inputmode="decimal" class="mono" value="'+esc(d.riskPct)+'"></label></div><div class="chips" id="c-chips">'+['0.25','0.5','1','2'].map(function(r){return '<button type="button" class="chip" data-r="'+r+'">'+r+'%</button>'}).join('')+'</div><div id="c-out"></div></div></details>';
+  h+='<section class="card stack"><h3>Result</h3><div class="g2">'+inp('lots','Lots','0.00')+inp('r','Result in R','auto')+'</div>'+inp('pnl','Profit or loss ($, optional)','')+'<p class="note" id="r-note">Result in R fills in from entry, stop, and exit. Leave exit empty while the trade is open.</p></section>';
+  h+='<section class="card stack"><h3>Review</h3>'+field('Grade',seg('grade',['A','B','C'],d.grade))+field('Followed my rules',seg('rules',['Yes','No'],d.rules))
+    +'<div class="g2">'+field('Mistake','<select data-f="mistake" id="f-mistake">'+opts(MISTAKES,d.mistake)+'</select>')+field('Emotion','<select data-f="emotion" id="f-emotion">'+opts(EMOTIONS,d.emotion)+'</select>')+'</div>'
+    +field('Notes','<textarea data-f="notes" id="f-notes" placeholder="What did price do? What would you repeat?">'+esc(d.notes)+'</textarea>')
+    +'<div class="fld"><span>Screenshot</span><input id="f-img" type="file" accept="image/*"><img class="shot" id="img-prev" alt="Screenshot preview" hidden><button type="button" class="btn sm" id="img-rm" hidden>Remove screenshot</button></div></section>';
+  h+='<p class="err" id="err" hidden></p><button class="btn pri full" id="save">'+(t?'Save changes':'Save trade')+'</button><a class="btn full" href="#trades">Cancel</a>';
+  setTimeout(function(){wireAdd(t)},0);
+  return h;
+}
+function autoAligned(){var d=draft;if(d.alignedTouched||!d.weekly)return;var a=d.weekly==='Neutral'?'No':((d.weekly==='Bullish'&&d.dir==='Buy')||(d.weekly==='Bearish'&&d.dir==='Sell'))?'Yes':'No';d.aligned=a;setSeg('aligned',a,true)}
+function setSeg(f,v,silent){var el=$('[data-seg="'+f+'"]');if(!el)return;$$('button',el).forEach(function(b){b.classList.toggle('on',b.dataset.v===v)});draft[f]=v}
+function corrNote(){var p=draft.pair,o={'EUR/USD':'GBP/USD','GBP/USD':'EUR/USD','XAU/USD':'XAG/USD','XAG/USD':'XAU/USD'}[p];var n=$('#corr-note');if(n)n.textContent='Check '+o+': did it confirm this '+p+' trade?'}
+function calcPos(){
+  var d=draft,e=num(d.entry),s=num(d.sl);if(e==null||s==null||e===s)return null;
+  var dist=Math.abs(e-s),c=state.settings.contract[d.pair]||1,pct=num(d.riskPct)||0,risk=state.settings.balance*pct/100;
+  var raw=risk/(dist*c),lots=Math.floor(raw*100+1e-9)/100;
+  return {e:e,s:s,dist:dist,c:c,risk:risk,raw:raw,lots:lots,real:lots*dist*c,long:e>s};
+}
+function distLabel(p,dist){if(p==='EUR/USD'||p==='GBP/USD')return (dist/0.0001).toFixed(1)+' pips';if(p==='XAU/USD')return '$'+dist.toFixed(2)+' ('+Math.round(dist/0.01)+' pts)';return '$'+dist.toFixed(3)}
+function updCalc(){
+  var o=$('#c-out');if(!o)return;var c=calcPos(),d=draft;
+  $$('#c-chips .chip').forEach(function(b){b.classList.toggle('on',num(d.riskPct)===+b.dataset.r)});
+  if(!c){o.innerHTML='<p class="note">Enter entry and stop loss to size the trade.</p>';return}
+  var dec=DEC[d.pair]||5,w='';
+  if((d.dir==='Buy'&&!c.long)||(d.dir==='Sell'&&c.long))w='<div class="warnbox">Your stop is on the wrong side of entry for a '+d.dir.toLowerCase()+'.</div>';
+  if(c.lots<0.01)w+='<div class="warnbox">Risk is too small for 0.01 lot. Widen the stop or raise the risk %.</div>';
+  var tps=[1,2,3].map(function(k){return '<div class="kv"><span>'+k+'R target</span><span class="mono">'+(c.e+(c.long?1:-1)*k*c.dist).toFixed(dec)+'</span></div>'}).join('');
+  o.innerHTML=w+'<div><div class="note">Lot size</div><div class="lots">'+c.lots.toFixed(2)+'</div></div>'
+    +'<div class="kv"><span>Risk budget</span><span class="mono">$'+c.risk.toFixed(2)+'</span></div><div class="kv"><span>Actual risk at this lot</span><span class="mono">$'+c.real.toFixed(2)+'</span></div><div class="kv"><span>Stop distance</span><span class="mono">'+distLabel(d.pair,c.dist)+'</span></div>'+tps
+    +'<button type="button" class="btn sm" id="use-lot">Use '+c.lots.toFixed(2)+' lots in this trade</button><p class="note">Assumes 1 lot = '+c.c.toLocaleString()+(d.pair.indexOf('XA')===0?' oz':' units')+'. Change this in Setup if your broker differs.</p>';
+  var b=$('#use-lot');if(b)b.onclick=function(){draft.lots=c.lots.toFixed(2);$('#f-lots').value=draft.lots;toast('Lot size added')};
+}
+function updR(){if(draft.rManual)return;var r=rOf(draft);draft.r=r==null?'':(Math.round(r*100)/100).toString();var el=$('#f-r');if(el)el.value=draft.r}
+function wireAdd(t){
+  var d=draft;
+  $$('[data-f]').forEach(function(el){
+    el.addEventListener('input',function(){
+      var f=el.dataset.f;d[f]=el.value;
+      if(f==='r')d.rManual=el.value.trim()!=='';
+      if(['entry','sl','exit','r'].indexOf(f)>=0)updR();
+      if(['entry','sl','pair','riskPct'].indexOf(f)>=0)updCalc();
+      if(f==='pair'){corrNote();updCalc()}
+    });
+  });
+  $$('[data-seg]').forEach(function(sg){$$('button',sg).forEach(function(b){b.onclick=function(){
+    var f=sg.dataset.seg;setSeg(f,b.dataset.v);
+    if(f==='aligned')d.alignedTouched=true;
+    if(f==='weekly'||f==='dir')autoAligned();
+    if(f==='dir')updCalc();
+  }})});
+  $('#c-bal').addEventListener('input',function(e){var v=num(e.target.value);if(v!=null&&v>0){state.settings.balance=v;save();updCalc()}});
+  $$('#c-chips .chip').forEach(function(b){b.onclick=function(){d.riskPct=b.dataset.r;$('#f-riskPct').value=d.riskPct;updCalc()}});
+  var fi=$('#f-img'),pv=$('#img-prev'),rm=$('#img-rm');
+  function showPrev(src){if(src){pv.src=src;pv.hidden=false;rm.hidden=false}else{pv.hidden=true;rm.hidden=true}}
+  if(t&&t.img)idb.get(t.id).then(showPrev);
+  fi.onchange=function(){var f=fi.files&&fi.files[0];if(!f)return;shrink(f).then(function(u){draftImg=u;showPrev(u)}).catch(function(){toast('That image could not be read')})};
+  rm.onclick=function(){draftImg=null;fi.value='';showPrev(null)};
+  corrNote();updCalc();updR();
+  $('#save').onclick=function(){
+    var er=$('#err'),e=num(d.entry),s=num(d.sl);
+    if(e==null||s==null||e===s){er.textContent='Enter an entry and a stop loss that are different prices.';er.hidden=false;er.scrollIntoView({block:'center'});return}
+    er.hidden=true;
+    var c=calcPos();var r=num(d.r);if(r==null&&!d.rManual)r=rOf(d);
+    var lots=num(d.lots);if(lots==null&&c&&c.lots>=0.01)lots=c.lots;
+    var id=t?t.id:uid(),hasImg=draftImg===undefined?!!(t&&t.img):!!draftImg;
+    var tr={id:id,date:d.date||todayStr(),time:d.time,pair:d.pair,dir:d.dir,model:d.model,session:d.session,weekly:d.weekly,aligned:d.aligned,dailyBias:d.dailyBias,corr:d.corr,setup:d.setup.trim(),entry:e,sl:s,tp:num(d.tp),exit:num(d.exit),riskPct:num(d.riskPct),lots:lots,r:r,pnl:num(d.pnl),grade:d.grade,mistake:d.mistake,emotion:d.emotion,rules:d.rules,notes:d.notes.trim(),img:hasImg,sample:t?t.sample:false};
+    if(t)state.trades=state.trades.map(function(x){return x.id===id?tr:x});else state.trades.push(tr);
+    var p=Promise.resolve();
+    if(draftImg)p=idb.put(id,draftImg);else if(draftImg===null)p=idb.del(id);
+    p.then(function(){save();toast(t?'Changes saved':'Trade saved');location.hash='#trade-'+id});
+  };
+}
+
+function vDaily(){
+  var date=state.ui.daily,n=state.daily[date]||{};
+  var ta=function(f,l,ph){return '<label>'+l+'<textarea data-d="'+f+'" placeholder="'+ph+'">'+esc(n[f]||'')+'</textarea></label>'};
+  var past=Object.keys(state.daily).filter(function(k){return k!==date&&Object.keys(state.daily[k]).some(function(f){return state.daily[k][f]})}).sort().reverse().slice(0,6);
+  var h='<h1>Daily note</h1><section class="card stack"><div class="g2"><label>Date<input id="d-date" type="date" value="'+date+'"></label><div class="fld"><span>Status</span><span id="dsave" class="note" style="padding-top:12px">Saves as you type</span></div></div>'+(past.length?'<div class="chips">'+past.map(function(k){return '<button class="chip" data-go="'+k+'">'+fmtDate(k)+'</button>'}).join('')+'</div>':'')+'</section>';
+  h+='<section class="card stack"><h3>Before the session</h3>'+ta('bias','Bias per pair and why','EURUSD bullish above Asia low. Gold bearish below weekly open.')+ta('levels','Key levels and news','Prior day high 1.1560, NY open 15:30, CPI 14:30')+ta('plan','If this, then that','If London sweeps the Asia low, I look for an M5 FVG and target the Asia high.')
+    +'<div class="g2"><label>Max trades<input data-d="maxT" inputmode="numeric" class="mono" value="'+esc(n.maxT||'')+'" placeholder="2"></label><label>Max loss (R)<input data-d="maxL" inputmode="decimal" class="mono" value="'+esc(n.maxL||'')+'" placeholder="2"></label></div></section>';
+  h+='<section class="card stack"><h3>After the session</h3><div class="fld"><span>Plan followed (1 to 5)</span><div class="seg" id="d-score">'+[1,2,3,4,5].map(function(k){return '<button type="button" data-v="'+k+'" class="'+(String(n.score)===String(k)?'on':'')+'">'+k+'</button>'}).join('')+'</div></div>'+ta('best','Best decision','')+ta('worst','Worst decision','')+ta('fix','One change for tomorrow','')+ta('state','Sleep, focus, mood','')+'</section>';
+  setTimeout(wireDaily,0);return h;
+}
+var dt;
+function wireDaily(){
+  var date=state.ui.daily;
+  function put(f,v){state.daily[date]=state.daily[date]||{};state.daily[date][f]=v;var s=$('#dsave');if(s)s.textContent='Saving…';clearTimeout(dt);dt=setTimeout(function(){save();var s2=$('#dsave');if(s2)s2.textContent='Saved'},350)}
+  $$('[data-d]').forEach(function(el){el.addEventListener('input',function(){put(el.dataset.d,el.value)})});
+  $$('#d-score button').forEach(function(b){b.onclick=function(){$$('#d-score button').forEach(function(x){x.classList.toggle('on',x===b)});put('score',b.dataset.v)}});
+  $('#d-date').onchange=function(e){if(e.target.value){state.ui.daily=e.target.value;route()}};
+  $$('[data-go]').forEach(function(b){b.onclick=function(){state.ui.daily=b.dataset.go;route()}});
+}
+
+function vReview(){
+  var ws=state.ui.week,we=addDays(ws,6),wk=state.weekly[ws]||{};
+  var list=state.trades.filter(function(t){return t.date>=ws&&t.date<=we}),s=stats(list);
+  var label='Week '+isoWeek(ws)+' · '+fmtDate(ws)+' to '+fmtDate(we);
+  var h='<h1>Weekly review</h1><section class="card wk"><button class="icon-btn" id="wprev" aria-label="Previous week"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button><div><b>'+label+'</b><div class="note">'+list.length+' trade'+(list.length===1?'':'s')+' logged</div></div><button class="icon-btn" id="wnext" aria-label="Next week"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></section>';
+  if(s.n){
+    h+='<section class="tiles g2"><div class="t"><small>Net result</small><b class="'+cls(s.net)+'">'+R(s.net)+'</b></div><div class="t"><small>Win rate</small><b>'+Math.round(s.win*100)+'%</b></div><div class="t"><small>Expectancy</small><b class="'+cls(s.exp)+'">'+R(s.exp)+'</b></div><div class="t"><small>Rule compliance</small><b>'+Math.round(s.comp*100)+'%</b></div></section>';
+    var best=list.filter(function(t){return t.r!=null}).sort(function(a,b){return b.r-a.r});
+    h+='<section class="card"><h3>Best and worst</h3><div class="kv"><span>Best trade</span><span class="mono up">'+esc(SHORT[best[0].pair])+' '+R(best[0].r)+'</span></div><div class="kv"><span>Worst trade</span><span class="mono down">'+esc(SHORT[best[best.length-1].pair])+' '+R(best[best.length-1].r)+'</span></div></section>';
+    var mm={};list.forEach(function(t){if(t.r!=null&&t.mistake&&t.mistake!=='None'){mm[t.mistake]=mm[t.mistake]||{n:0,r:0};mm[t.mistake].n++;mm[t.mistake].r+=t.r}});
+    var mk=Object.keys(mm).sort(function(a,b){return mm[b].n-mm[a].n}).slice(0,3);
+    h+='<section class="card"><h3>Top mistakes</h3>'+(mk.length?mk.map(function(k){return '<div class="kv"><span>'+esc(k)+' · '+mm[k].n+'×</span><span class="mono '+cls(mm[k].r)+'">'+R(mm[k].r)+'</span></div>'}).join(''):'<p class="note">No mistakes tagged this week.</p>')+'</section>';
+    h+=brk('Weekly direction',list,alignKey,ALIGN_KEYS)+brk('Forex vs metals',list,function(t){return GROUP[t.pair]},['Forex','Metals'])+brk('By pair',list,function(t){return t.pair},PAIRS)+brk('By timeframe model',list,function(t){return t.model},MODELS)+brk('Correlated pair check',list,function(t){return t.corr},['Confirmed','Diverged','Not checked']);
+  }else h+='<section class="card"><p class="muted">No closed trades this week. Your notes below still save.</p></section>';
+  h+='<section class="card stack"><h3>Plan and lessons</h3><label>Weekly direction per pair<textarea data-w="dir" placeholder="EURUSD bullish, GBPUSD bullish, Gold bullish, Silver neutral">'+esc(wk.dir||'')+'</textarea></label><label>One rule to tighten<textarea data-w="tighten">'+esc(wk.tighten||'')+'</textarea></label><label>One thing to keep doing<textarea data-w="keep">'+esc(wk.keep||'')+'</textarea></label></section>';
+  setTimeout(wireReview,0);return h;
+}
+function wireReview(){
+  var ws=state.ui.week,t;
+  $('#wprev').onclick=function(){state.ui.week=addDays(ws,-7);route()};
+  $('#wnext').onclick=function(){state.ui.week=addDays(ws,7);route()};
+  $$('[data-w]').forEach(function(el){el.addEventListener('input',function(){state.weekly[ws]=state.weekly[ws]||{};state.weekly[ws][el.dataset.w]=el.value;clearTimeout(t);t=setTimeout(save,350)})});
+}
+
+function addSamples(){
+  var rows=[
+   [1,'XAU/USD','Sell','H4 to M15','London','Bearish','Yes','Confirmed',4012.5,4021,3995.5,'A','None','Calm','Yes'],
+   [2,'EUR/USD','Buy','H4 to M15','London','Bullish','Yes','Confirmed',1.1520,1.1495,1.1495,'B','Early entry','Hesitant','Yes'],
+   [3,'GBP/USD','Buy','H1 to M1','New York','Bullish','Yes','Diverged',1.3180,1.3165,1.3205,'B','None','Confident','Yes'],
+   [4,'XAG/USD','Sell','Daily to H1','New York','Bearish','Yes','Confirmed',48.2,48.9,46.8,'A','None','Calm','Yes'],
+   [6,'EUR/USD','Sell','H1 to M1','London','Bullish','No','Not checked',1.1540,1.1555,1.1555,'C','Against weekly direction','FOMO','No'],
+   [7,'XAU/USD','Buy','H4 to M15','Asia','Bullish','Yes','Confirmed',3980,3972,3980,'B','Exited early','Hesitant','Yes'],
+   [8,'GBP/USD','Sell','H4 to M15','London','Bearish','Yes','Confirmed',1.3220,1.3240,1.3175,'A','None','Calm','Yes'],
+   [9,'EUR/USD','Buy','Daily to H1','London','Bullish','Yes','Confirmed',1.1490,1.1460,1.1550,'A','None','Confident','Yes'],
+   [10,'XAU/USD','Sell','H1 to M1','New York','Neutral','No','Not checked',3995,4001,4001,'C','Chased','Revenge','No'],
+   [13,'GBP/USD','Buy','H4 to M15','London','Bullish','Yes','Diverged',1.3100,1.3080,1.3135,'B','None','Calm','Yes'],
+   [14,'XAG/USD','Buy','H4 to M15','Asia','Bullish','Yes','Confirmed',47.1,46.7,46.7,'B','Moved stop','Hesitant','No'],
+   [15,'EUR/USD','Sell','H4 to M15','New York','Bearish','Yes','Confirmed',1.1580,1.1600,1.1540,'A','None','Calm','Yes'],
+   [16,'XAU/USD','Buy','Daily to H1','London','Bullish','Yes','Confirmed',3940,3925,3955,'A','None','Confident','Yes']
+  ];
+  rows.forEach(function(r){
+    var t={id:uid(),date:addDays(todayStr(),-r[0]),time:'10:15',pair:r[1],dir:r[2],model:r[3],session:r[4],weekly:r[5],aligned:r[6],corr:r[7],dailyBias:'',setup:'Sample trade',entry:r[8],sl:r[9],tp:null,exit:r[10],riskPct:1,lots:null,pnl:null,grade:r[11],mistake:r[12],emotion:r[13],rules:r[14],notes:'',img:false,sample:true};
+    t.r=rOf(t);state.trades.push(t);
+  });
+  save();toast('Sample trades added');
+}
+
+function vSetup(){
+  var s=state.settings;
+  var h='<h1>Setup</h1><section class="card stack"><h3>Account</h3><div class="g2"><label>Balance ($)<input id="s-bal" class="mono" inputmode="decimal" value="'+esc(s.balance)+'"></label><label>Default risk %<input id="s-risk" class="mono" inputmode="decimal" value="'+esc(s.risk)+'"></label></div></section>';
+  h+='<section class="card stack"><h3>Contract size per 1 lot</h3><div class="g2">'+PAIRS.map(function(p){return '<label>'+SHORT[p]+'<input class="mono" inputmode="decimal" data-c="'+p+'" value="'+esc(s.contract[p])+'"></label>'}).join('')+'</div><p class="note">Defaults match a typical MT5 account: 100,000 units for forex, 100 oz for Gold, 5,000 oz for Silver. Check your broker.</p></section>';
+  h+='<section class="card stack"><h3>Backup</h3><p class="note">Your trades live only in this browser. Export a backup regularly, because clearing site data erases them.</p><div class="g2"><button class="btn" id="b-copy">Copy backup</button><button class="btn" id="b-dl">Download file</button></div><textarea id="b-box" class="mono" style="font-size:12px;min-height:90px" placeholder="Paste a backup here to restore it"></textarea><input id="b-file" type="file" accept=".json,application/json"><button class="btn" id="b-imp">Restore from pasted backup</button><p class="err" id="b-err" hidden></p></section>';
+  h+='<section class="card stack"><h3>Data</h3>'+(state.trades.some(function(t){return t.sample})?'<button class="btn" id="d-smp">Remove sample trades</button>':'<button class="btn" id="d-add">Add sample trades</button>')+'<button class="btn warn" id="d-all">Erase everything</button></section>';
+  h+='<p class="note" style="text-align:center">MKtrades Journal · Consistency and grind</p>';
+  setTimeout(wireSetup,0);return h;
+}
+function wireSetup(){
+  var s=state.settings;
+  $('#s-bal').oninput=function(e){var v=num(e.target.value);if(v>0){s.balance=v;save()}};
+  $('#s-risk').oninput=function(e){var v=num(e.target.value);if(v>0){s.risk=v;save()}};
+  $$('[data-c]').forEach(function(el){el.oninput=function(){var v=num(el.value);if(v>0){s.contract[el.dataset.c]=v;save()}}});
+  function bundle(){return Promise.all(state.trades.filter(function(t){return t.img}).map(function(t){return idb.get(t.id).then(function(d){return [t.id,d]})})).then(function(a){var im={};a.forEach(function(x){if(x[1])im[x[0]]=x[1]});return JSON.stringify({app:'mktrades',v:1,settings:state.settings,trades:state.trades,daily:state.daily,weekly:state.weekly,images:im})})}
+  $('#b-copy').onclick=function(){bundle().then(function(j){var box=$('#b-box');box.value=j;var ok=function(){toast('Backup copied')},no=function(){box.select();toast('Select the text and copy it')};try{navigator.clipboard.writeText(j).then(ok,no)}catch(e){no()}})};
+  $('#b-dl').onclick=function(){bundle().then(function(j){try{var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([j],{type:'application/json'}));a.download='mktrades-backup-'+todayStr()+'.json';document.body.appendChild(a);a.click();a.remove();toast('Backup file requested. If nothing downloads, use Copy backup.')}catch(e){toast('Use Copy backup instead')}})};
+  $('#b-file').onchange=function(e){var f=e.target.files[0];if(!f)return;var r=new FileReader();r.onload=function(){$('#b-box').value=r.result};r.readAsText(f)};
+  var armed=false;
+  $('#b-imp').onclick=function(){
+    var er=$('#b-err'),b=$('#b-imp');er.hidden=true;var o;
+    try{o=JSON.parse($('#b-box').value);if(!o||!Array.isArray(o.trades))throw 0}catch(e){er.textContent='That is not a valid MKtrades backup.';er.hidden=false;return}
+    if(!armed){armed=true;b.textContent='Tap again to replace my current data';return}
+    state.settings=Object.assign({},state.settings,o.settings||{});state.settings.contract=Object.assign({},CONTRACT,(o.settings||{}).contract||{});
+    state.trades=o.trades;state.daily=o.daily||{};state.weekly=o.weekly||{};save();
+    Promise.all(Object.keys(o.images||{}).map(function(k){return idb.put(k,o.images[k])})).then(function(){toast('Backup restored');location.hash='#home'})
+  };
+  var a=$('#d-add'),m=$('#d-smp'),all=$('#d-all');
+  if(a)a.onclick=function(){addSamples();route()};
+  if(m)m.onclick=function(){state.trades=state.trades.filter(function(t){return !t.sample});save();toast('Sample trades removed');route()};
+  var arm2=false;all.onclick=function(){if(!arm2){arm2=true;all.textContent='Tap again to erase all trades and notes';return}
+    state.trades.forEach(function(t){if(t.img)idb.del(t.id)});state.trades=[];state.daily={};state.weekly={};save();toast('Everything erased');location.hash='#home'};
+}
+
+function route(){
+  var h=(location.hash||'#home').slice(1),v=$('#view'),n='home',html='';
+  if(h.indexOf('trade-')===0){n='trades';html=vTrade(h.slice(6))}
+  else if(h.indexOf('edit-')===0){n='add';html=vAdd(h.slice(5))}
+  else if(h==='trades'){n='trades';html=vTrades()}
+  else if(h==='add'){n='add';html=vAdd(null)}
+  else if(h==='daily'){n='daily';html=vDaily()}
+  else if(h==='review'){n='review';html=vReview()}
+  else if(h==='setup'){n='';html=vSetup()}
+  else{html=vHome()}
+  v.innerHTML=html;
+  if(n==='home')wireHome();if(n==='trades'&&h==='trades')wireTrades();
+  $$('.nav a').forEach(function(a){a.classList.toggle('on',a.dataset.n===n)});
+}
+var last='';
+window.addEventListener('hashchange',function(){var cur=(location.hash||'#home');if(cur!==last)window.scrollTo(0,0);last=cur;route()});
+load();last=location.hash||'#home';
+idb.open().then(function(){route()});route();
+try{if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol))navigator.serviceWorker.register('sw.js').catch(function(){})}catch(e){}
+})();
+</script>
+</body></html>

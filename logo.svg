@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>MKtrades logo</title>
+  <defs>
+    <radialGradient id="bg" cx="0.5" cy="0.35" r="0.85">
+      <stop offset="0" stop-color="#1f8758"/>
+      <stop offset="0.55" stop-color="#0d4a30"/>
+      <stop offset="1" stop-color="#041a10"/>
+    </radialGradient>
+    <linearGradient id="face" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff0b3"/><stop offset="0.45" stop-color="#f7b733"/><stop offset="1" stop-color="#c77d0a"/>
+    </linearGradient>
+    <linearGradient id="side" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8a5a0e"/><stop offset="1" stop-color="#3a2406"/>
+    </linearGradient>
+    <g id="mk">
+      <polygon points="0,140 0,0 28,0 65,72 102,0 130,0 130,140 104,140 104,50 65,118 26,50 26,140"/>
+      <polygon points="146,0 174,0 174,58 234,0 272,0 208,70 276,140 238,140 174,82 174,140 146,140"/>
+    </g>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <g transform="translate(256,256) scale(1.0) translate(-256,-256)">
+  <g>
+<g opacity="0.5"><line x1="44" y1="373.0" x2="44" y2="425.0" stroke="#3ee08a" stroke-width="3"/><rect x="36" y="387.0" width="16" height="26" rx="2" fill="#3ee08a"/></g>
+<g opacity="0.5"><line x1="76" y1="344.0" x2="76" y2="398.0" stroke="#3ee08a" stroke-width="3"/><rect x="68" y="362.0" width="16" height="18" rx="2" fill="#3ee08a"/></g>
+<g opacity="0.42"><line x1="108" y1="343.0" x2="108" y2="407.0" stroke="#ff7062" stroke-width="3"/><rect x="100" y="365.0" width="16" height="30" rx="2" fill="#ff7062"/></g>
+<g opacity="0.5"><line x1="140" y1="324.0" x2="140" y2="378.0" stroke="#3ee08a" stroke-width="3"/><rect x="132" y="338.0" width="16" height="22" rx="2" fill="#3ee08a"/></g>
+<g opacity="0.5"><line x1="172" y1="320.0" x2="172" y2="386.0" stroke="#3ee08a" stroke-width="3"/><rect x="164" y="338.0" width="16" height="36" rx="2" fill="#3ee08a"/></g>
+<g opacity="0.42"><line x1="204" y1="273.0" x2="204" y2="333.0" stroke="#ff7062" stroke-width="3"/><rect x="196" y="295.0" width="16" height="20" rx="2" fill="#ff7062"/></g>
+<g opacity="0.5"><line x1="236" y1="290.0" x2="236" y2="344.0" stroke="#3ee08a" stroke-width="3"/><rect x="228" y="304.0" width="16" height="28" rx="2" fill="#3ee08a"/></g>
+<g opacity="0.5"><line x1="268" y1="259.0" x2="268" y2="311.0" stroke="#3ee08a" stroke-width="3"/><rect x="260" y="277.0" width="16" height="16" rx="2" fill="#3ee08a"/></g>
+<g opacity="0.42"><line x1="300" y1="255.0" x2="300" y2="323.0" stroke="#ff7062" stroke-width="3"/><rect x="292" y="277.0" width="16" height="34" rx="2" fill="#ff7062"/></g>
+<g opacity="0.5"><line x1="332" y1="221.0" x2="332" y2="277.0" stroke="#3ee08a" stroke-width="3"/><rect x="324" y="235.0" width="16" height="24" rx="2" fill="#3ee08a"/></g>
+<g opacity="0.5"><line x1="364" y1="223.0" x2="364" y2="283.0" stroke="#3ee08a" stroke-width="3"/><rect x="356" y="241.0" width="16" height="30" rx="2" fill="#3ee08a"/></g>
+<g opacity="0.42"><line x1="396" y1="196.0" x2="396" y2="254.0" stroke="#ff7062" stroke-width="3"/><rect x="388" y="218.0" width="16" height="18" rx="2" fill="#ff7062"/></g>
+<g opacity="0.5"><line x1="428" y1="197.0" x2="428" y2="249.0" stroke="#3ee08a" stroke-width="3"/><rect x="420" y="211.0" width="16" height="26" rx="2" fill="#3ee08a"/></g>
+  </g>
+  <g transform="translate(118,96)">
+<use href="#mk" transform="translate(14,14)" fill="#1c1104" opacity=".55"/>
+<use href="#mk" transform="translate(14.0,14.0)" fill="url(#side)"/>
+<use href="#mk" transform="translate(12.6,12.6)" fill="url(#side)"/>
+<use href="#mk" transform="translate(11.2,11.2)" fill="url(#side)"/>
+<use href="#mk" transform="translate(9.799999999999999,9.799999999999999)" fill="url(#side)"/>
+<use href="#mk" transform="translate(8.399999999999999,8.399999999999999)" fill="url(#side)"/>
+<use href="#mk" transform="translate(7.0,7.0)" fill="url(#side)"/>
+<use href="#mk" transform="translate(5.6,5.6)" fill="url(#side)"/>
+<use href="#mk" transform="translate(4.199999999999999,4.199999999999999)" fill="url(#side)"/>
+<use href="#mk" transform="translate(2.8,2.8)" fill="url(#side)"/>
+<use href="#mk" transform="translate(1.4,1.4)" fill="url(#side)"/>
+    <use href="#mk" fill="url(#face)"/>
+  </g>
+  <rect x="86" y="292" width="340" height="124" rx="14" fill="#04120b" opacity=".6"/>
+  <text x="258" y="338" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="50" font-weight="700" fill="#1c1104">MKtrades</text>
+  <text x="256" y="335" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="50" font-weight="700" fill="url(#face)">MKtrades</text>
+  <line x1="96" y1="368" x2="206" y2="368" stroke="#f7b733" stroke-opacity=".6" stroke-width="1.5"/>
+  <line x1="306" y1="368" x2="416" y2="368" stroke="#f7b733" stroke-opacity=".6" stroke-width="1.5"/>
+  <circle cx="256" cy="368" r="3.5" fill="#3ee08a"/>
+  <text x="256" y="402" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="600" letter-spacing="4.5" fill="#cfe6d9">CONSISTENCY AND GRIND</text>
+  </g>
+  <rect x="2" y="2" width="508" height="508" rx="96" fill="none" stroke="#f7b733" stroke-opacity=".28" stroke-width="3"/>
+</svg>
