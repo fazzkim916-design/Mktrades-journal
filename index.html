@@ -20,14 +20,14 @@ body{margin:0;background:var(--bg) url("data:image/svg+xml;base64,PHN2ZyB4bWxucz
 [hidden]{display:none!important}
 .wm{position:fixed;inset:0;display:grid;place-items:center;pointer-events:none;z-index:0}
 .wm img{width:min(82vw,380px);opacity:.08}
-.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;margin-left:calc(-1*var(--gl));margin-right:calc(-1*var(--gr));padding:10px var(--gr) 10px var(--gl);background:var(--bg2);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;margin-left:calc(-1*var(--gl));margin-right:calc(-1*var(--gr));padding:10px var(--gr) 10px var(--gl);background:var(--bg2);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg2)}
 .top img{width:40px;height:40px;border-radius:10px;flex:none}
 .brand{min-width:0;flex:1}
-.brand b{display:block;font:700 24px/1 var(--display);letter-spacing:.02em}
+.brand b{display:block;font:700 clamp(18px,5.6vw,24px)/1 var(--display);letter-spacing:.02em;white-space:nowrap}
 .brand b span{color:var(--gold)}
 .brand small{display:block;margin-top:3px;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-.icon-btn{flex:none;width:44px;height:44px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--fg);display:grid;place-items:center;cursor:pointer}
+.icon-btn{flex:none;width:42px;height:42px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--fg);display:grid;place-items:center;cursor:pointer}
 .icon-btn svg,.nav svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 #view{position:relative;z-index:1;padding:16px 0 calc(92px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:14px}
 h1{font:700 30px/1.05 var(--display);letter-spacing:.01em;margin:4px 0 0}
@@ -122,6 +122,8 @@ svg.curve text{font:11px var(--mono);fill:var(--muted)}
 .hm i.s3{background:var(--down);border-color:var(--down);color:#2a0703}
 .hm i.f{opacity:.3}
 .hmh{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;text-align:center;font:500 11px var(--mono);color:var(--muted);margin-bottom:5px}
+.tvbox{height:440px;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--bg)}
+.tvbox .tradingview-widget-container,.tvbox .tradingview-widget-container__widget{height:100%;width:100%}
 .legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--muted)}
 .legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px;background:var(--bg);border:1px solid var(--line)}
 .legend .l2::before{background:var(--up);border-color:var(--up)}
@@ -133,6 +135,7 @@ svg.curve text{font:11px var(--mono);fill:var(--muted)}
 <header class="top">
   <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+CiAgPHRpdGxlPk1LdHJhZGVzIGxvZ288L3RpdGxlPgogIDxkZWZzPgogICAgPHJhZGlhbEdyYWRpZW50IGlkPSJiZyIgY3g9IjAuNSIgY3k9IjAuMzUiIHI9IjAuODUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMxZjg3NTgiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIwLjU1IiBzdG9wLWNvbG9yPSIjMGQ0YTMwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzA0MWExMCIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZmFjZSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZmYwYjMiLz48c3RvcCBvZmZzZXQ9IjAuNDUiIHN0b3AtY29sb3I9IiNmN2I3MzMiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNjNzdkMGEiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNpZGUiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjOGE1YTBlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjM2EyNDA2Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGcgaWQ9Im1rIj4KICAgICAgPHBvbHlnb24gcG9pbnRzPSIwLDE0MCAwLDAgMjgsMCA2NSw3MiAxMDIsMCAxMzAsMCAxMzAsMTQwIDEwNCwxNDAgMTA0LDUwIDY1LDExOCAyNiw1MCAyNiwxNDAiLz4KICAgICAgPHBvbHlnb24gcG9pbnRzPSIxNDYsMCAxNzQsMCAxNzQsNTggMjM0LDAgMjcyLDAgMjA4LDcwIDI3NiwxNDAgMjM4LDE0MCAxNzQsODIgMTc0LDE0MCAxNDYsMTQwIi8+CiAgICA8L2c+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iOTYiIGZpbGw9InVybCgjYmcpIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjU2LDI1Nikgc2NhbGUoMS4wKSB0cmFuc2xhdGUoLTI1NiwtMjU2KSI+CiAgPGc+CjxnIG9wYWNpdHk9IjAuNSI+PGxpbmUgeDE9IjQ0IiB5MT0iMzczLjAiIHgyPSI0NCIgeTI9IjQyNS4wIiBzdHJva2U9IiMzZWUwOGEiIHN0cm9rZS13aWR0aD0iMyIvPjxyZWN0IHg9IjM2IiB5PSIzODcuMCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjI2IiByeD0iMiIgZmlsbD0iIzNlZTA4YSIvPjwvZz4KPGcgb3BhY2l0eT0iMC41Ij48bGluZSB4MT0iNzYiIHkxPSIzNDQuMCIgeDI9Ijc2IiB5Mj0iMzk4LjAiIHN0cm9rZT0iIzNlZTA4YSIgc3Ryb2tlLXdpZHRoPSIzIi8+PHJlY3QgeD0iNjgiIHk9IjM2Mi4wIiB3aWR0aD0iMTYiIGhlaWdodD0iMTgiIHJ4PSIyIiBmaWxsPSIjM2VlMDhhIi8+PC9nPgo8ZyBvcGFjaXR5PSIwLjQyIj48bGluZSB4MT0iMTA4IiB5MT0iMzQzLjAiIHgyPSIxMDgiIHkyPSI0MDcuMCIgc3Ryb2tlPSIjZmY3MDYyIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSIxMDAiIHk9IjM2NS4wIiB3aWR0aD0iMTYiIGhlaWdodD0iMzAiIHJ4PSIyIiBmaWxsPSIjZmY3MDYyIi8+PC9nPgo8ZyBvcGFjaXR5PSIwLjUiPjxsaW5lIHgxPSIxNDAiIHkxPSIzMjQuMCIgeDI9IjE0MCIgeTI9IjM3OC4wIiBzdHJva2U9IiMzZWUwOGEiIHN0cm9rZS13aWR0aD0iMyIvPjxyZWN0IHg9IjEzMiIgeT0iMzM4LjAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIyMiIgcng9IjIiIGZpbGw9IiMzZWUwOGEiLz48L2c+CjxnIG9wYWNpdHk9IjAuNSI+PGxpbmUgeDE9IjE3MiIgeTE9IjMyMC4wIiB4Mj0iMTcyIiB5Mj0iMzg2LjAiIHN0cm9rZT0iIzNlZTA4YSIgc3Ryb2tlLXdpZHRoPSIzIi8+PHJlY3QgeD0iMTY0IiB5PSIzMzguMCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjM2IiByeD0iMiIgZmlsbD0iIzNlZTA4YSIvPjwvZz4KPGcgb3BhY2l0eT0iMC40MiI+PGxpbmUgeDE9IjIwNCIgeTE9IjI3My4wIiB4Mj0iMjA0IiB5Mj0iMzMzLjAiIHN0cm9rZT0iI2ZmNzA2MiIgc3Ryb2tlLXdpZHRoPSIzIi8+PHJlY3QgeD0iMTk2IiB5PSIyOTUuMCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjIwIiByeD0iMiIgZmlsbD0iI2ZmNzA2MiIvPjwvZz4KPGcgb3BhY2l0eT0iMC41Ij48bGluZSB4MT0iMjM2IiB5MT0iMjkwLjAiIHgyPSIyMzYiIHkyPSIzNDQuMCIgc3Ryb2tlPSIjM2VlMDhhIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSIyMjgiIHk9IjMwNC4wIiB3aWR0aD0iMTYiIGhlaWdodD0iMjgiIHJ4PSIyIiBmaWxsPSIjM2VlMDhhIi8+PC9nPgo8ZyBvcGFjaXR5PSIwLjUiPjxsaW5lIHgxPSIyNjgiIHkxPSIyNTkuMCIgeDI9IjI2OCIgeTI9IjMxMS4wIiBzdHJva2U9IiMzZWUwOGEiIHN0cm9rZS13aWR0aD0iMyIvPjxyZWN0IHg9IjI2MCIgeT0iMjc3LjAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjIiIGZpbGw9IiMzZWUwOGEiLz48L2c+CjxnIG9wYWNpdHk9IjAuNDIiPjxsaW5lIHgxPSIzMDAiIHkxPSIyNTUuMCIgeDI9IjMwMCIgeTI9IjMyMy4wIiBzdHJva2U9IiNmZjcwNjIiIHN0cm9rZS13aWR0aD0iMyIvPjxyZWN0IHg9IjI5MiIgeT0iMjc3LjAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIzNCIgcng9IjIiIGZpbGw9IiNmZjcwNjIiLz48L2c+CjxnIG9wYWNpdHk9IjAuNSI+PGxpbmUgeDE9IjMzMiIgeTE9IjIyMS4wIiB4Mj0iMzMyIiB5Mj0iMjc3LjAiIHN0cm9rZT0iIzNlZTA4YSIgc3Ryb2tlLXdpZHRoPSIzIi8+PHJlY3QgeD0iMzI0IiB5PSIyMzUuMCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjI0IiByeD0iMiIgZmlsbD0iIzNlZTA4YSIvPjwvZz4KPGcgb3BhY2l0eT0iMC41Ij48bGluZSB4MT0iMzY0IiB5MT0iMjIzLjAiIHgyPSIzNjQiIHkyPSIyODMuMCIgc3Ryb2tlPSIjM2VlMDhhIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSIzNTYiIHk9IjI0MS4wIiB3aWR0aD0iMTYiIGhlaWdodD0iMzAiIHJ4PSIyIiBmaWxsPSIjM2VlMDhhIi8+PC9nPgo8ZyBvcGFjaXR5PSIwLjQyIj48bGluZSB4MT0iMzk2IiB5MT0iMTk2LjAiIHgyPSIzOTYiIHkyPSIyNTQuMCIgc3Ryb2tlPSIjZmY3MDYyIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSIzODgiIHk9IjIxOC4wIiB3aWR0aD0iMTYiIGhlaWdodD0iMTgiIHJ4PSIyIiBmaWxsPSIjZmY3MDYyIi8+PC9nPgo8ZyBvcGFjaXR5PSIwLjUiPjxsaW5lIHgxPSI0MjgiIHkxPSIxOTcuMCIgeDI9IjQyOCIgeTI9IjI0OS4wIiBzdHJva2U9IiMzZWUwOGEiIHN0cm9rZS13aWR0aD0iMyIvPjxyZWN0IHg9IjQyMCIgeT0iMjExLjAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIyNiIgcng9IjIiIGZpbGw9IiMzZWUwOGEiLz48L2c+CiAgPC9nPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDExOCwxNTApIj4KPHVzZSBocmVmPSIjbWsiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE0LDE0KSIgZmlsbD0iIzFjMTEwNCIgb3BhY2l0eT0iLjU1Ii8+Cjx1c2UgaHJlZj0iI21rIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNC4wLDE0LjApIiBmaWxsPSJ1cmwoI3NpZGUpIi8+Cjx1c2UgaHJlZj0iI21rIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMi42LDEyLjYpIiBmaWxsPSJ1cmwoI3NpZGUpIi8+Cjx1c2UgaHJlZj0iI21rIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMS4yLDExLjIpIiBmaWxsPSJ1cmwoI3NpZGUpIi8+Cjx1c2UgaHJlZj0iI21rIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg5Ljc5OTk5OTk5OTk5OTk5OSw5Ljc5OTk5OTk5OTk5OTk5OSkiIGZpbGw9InVybCgjc2lkZSkiLz4KPHVzZSBocmVmPSIjbWsiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDguMzk5OTk5OTk5OTk5OTk5LDguMzk5OTk5OTk5OTk5OTk5KSIgZmlsbD0idXJsKCNzaWRlKSIvPgo8dXNlIGhyZWY9IiNtayIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNy4wLDcuMCkiIGZpbGw9InVybCgjc2lkZSkiLz4KPHVzZSBocmVmPSIjbWsiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDUuNiw1LjYpIiBmaWxsPSJ1cmwoI3NpZGUpIi8+Cjx1c2UgaHJlZj0iI21rIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0LjE5OTk5OTk5OTk5OTk5OSw0LjE5OTk5OTk5OTk5OTk5OSkiIGZpbGw9InVybCgjc2lkZSkiLz4KPHVzZSBocmVmPSIjbWsiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIuOCwyLjgpIiBmaWxsPSJ1cmwoI3NpZGUpIi8+Cjx1c2UgaHJlZj0iI21rIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxLjQsMS40KSIgZmlsbD0idXJsKCNzaWRlKSIvPgogICAgPHVzZSBocmVmPSIjbWsiIGZpbGw9InVybCgjZmFjZSkiLz4KICA8L2c+CiAgPC9nPgogIDxyZWN0IHg9IjIiIHk9IjIiIHdpZHRoPSI1MDgiIGhlaWdodD0iNTA4IiByeD0iOTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Y3YjczMyIgc3Ryb2tlLW9wYWNpdHk9Ii4yOCIgc3Ryb2tlLXdpZHRoPSIzIi8+Cjwvc3ZnPgo=" alt="MKtrades logo">
   <div class="brand"><b><span>MK</span>trades Journal</b><small>Consistency and grind</small></div>
+  <a class="icon-btn" href="#market" aria-label="Charts and news"><svg viewBox="0 0 24 24"><path d="M6 3v3M6 16v4M18 5v3M18 18v3"/><rect x="4" y="6" width="4" height="10" rx="1"/><rect x="16" y="8" width="4" height="10" rx="1"/></svg></a>
   <a class="icon-btn" href="#setup" aria-label="Setup and backup"><svg viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg></a>
 </header>
 <main id="view"></main>
@@ -185,7 +188,10 @@ function load(){
   state.settings={balance:s.balance!=null?s.balance:10000,risk:s.risk!=null?s.risk:1,contract:Object.assign({},CONTRACT,s.contract||{})};
   state.trades=d.trades||[];state.daily=d.daily||{};state.weekly=d.weekly||{};
 }
-function save(){if(!store.set('mk_data',{v:1,settings:state.settings,trades:state.trades,daily:state.daily,weekly:state.weekly}))toast('Browser storage is blocked. Export a backup before closing.')}
+function save(skipSync){
+  if(!store.set('mk_data',{v:1,settings:state.settings,trades:state.trades,daily:state.daily,weekly:state.weekly}))toast('Browser storage is blocked. Export a backup before closing.');
+  if(!skipSync&&typeof signedIn==='function'&&signedIn()){cloud.dirty=true;csave();schedSync()}
+}
 var tt;
 function toast(m){var t=$('#toast');t.textContent=m;t.hidden=false;clearTimeout(tt);tt=setTimeout(function(){t.hidden=true},2400)}
 
@@ -202,9 +208,9 @@ var R=function(x){var a=Math.round(Math.abs(x)*100)/100;return (a>0?(x>0?'+':'-'
 var cls=function(x){return x>0.004?'up':x<-0.004?'down':''};
 function stats(list){
   var cl=list.filter(function(t){return t.r!=null}).sort(function(a,b){return (a.date+(a.time||'')).localeCompare(b.date+(b.time||''))});
-  var n=cl.length,net=0,gw=0,gl=0,w=0,l=0,be=0,peak=0,dd=0,curve=[0],ok=0;
-  cl.forEach(function(t){net+=t.r;if(t.r>0){w++;gw+=t.r}else if(t.r<0){l++;gl+=-t.r}else be++;if(t.rules==='Yes')ok++;curve.push(net);peak=Math.max(peak,net);dd=Math.max(dd,peak-net)});
-  return {n:n,w:w,l:l,be:be,net:net,win:n?w/n:0,exp:n?net/n:0,pf:gl?gw/gl:(gw?Infinity:0),dd:dd,curve:curve,avgW:w?gw/w:0,avgL:l?gl/l:0,comp:n?ok/n:0};
+  var n=cl.length,net=0,gw=0,gl=0,w=0,l=0,be=0,peak=0,dd=0,curve=[0],ok=0,rn=0;
+  cl.forEach(function(t){net+=t.r;if(t.r>0){w++;gw+=t.r}else if(t.r<0){l++;gl+=-t.r}else be++;if(t.rules==='Yes'||t.rules==='No')rn++;if(t.rules==='Yes')ok++;curve.push(net);peak=Math.max(peak,net);dd=Math.max(dd,peak-net)});
+  return {n:n,w:w,l:l,be:be,net:net,win:n?w/n:0,exp:n?net/n:0,pf:gl?gw/gl:(gw?Infinity:0),dd:dd,curve:curve,avgW:w?gw/w:0,avgL:l?gl/l:0,comp:rn?ok/rn:0};
 }
 function brk(title,list,keyFn,keys){
   var rows=keys.map(function(k){var s=stats(list.filter(function(t){return t.r!=null&&keyFn(t)===k}));return {k:k,s:s}}).filter(function(x){return x.s.n});
@@ -379,13 +385,193 @@ function renderChecks(){
   ckNote();
 }
 
+var cloud=Object.assign({url:'',key:'',email:'',access:'',refresh:'',uid:'',exp:0,lastSync:'',dirty:false},store.get('mk_cloud',{}));
+var cstat={msg:'',conflict:null,busy:false},csT;
+var CLOUD_SQL='create table if not exists public.journal (\n  user_id uuid primary key references auth.users(id) on delete cascade,\n  data jsonb not null,\n  updated_at timestamptz not null default now()\n);\nalter table public.journal enable row level security;\ndrop policy if exists "own journal" on public.journal;\ncreate policy "own journal" on public.journal for all using (auth.uid() = user_id) with check (auth.uid() = user_id);';
+function csave(){store.set('mk_cloud',cloud)}
+function signedIn(){return !!(cloud.url&&cloud.key&&cloud.refresh)}
+function schedSync(){clearTimeout(csT);csT=setTimeout(function(){syncNow()},2500)}
+function hhmm(){return new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',hourCycle:'h23'})}
+function cfetch(path,opt){var o=Object.assign({method:'GET'},opt||{});o.headers=Object.assign({apikey:cloud.key,'Content-Type':'application/json'},o.headers||{});return fetch(cloud.url.replace(/\/+$/,'')+path,o)}
+function jerr(r){return r.json().catch(function(){return {}}).then(function(j){if(!r.ok)throw new Error(j.error_description||j.msg||j.message||j.hint||('Request failed ('+r.status+')'));return j})}
+function applySession(j){cloud.access=j.access_token;cloud.refresh=j.refresh_token||cloud.refresh;cloud.uid=(j.user&&j.user.id)||cloud.uid;cloud.exp=Date.now()+(j.expires_in||3600)*1000;csave()}
+function ensureToken(){if(cloud.access&&cloud.exp-60000>Date.now())return Promise.resolve();return cfetch('/auth/v1/token?grant_type=refresh_token',{method:'POST',body:JSON.stringify({refresh_token:cloud.refresh})}).then(jerr).then(applySession)}
+function hasRealData(){return state.trades.some(function(t){return !t.sample})||Object.keys(state.daily).some(function(k){return Object.keys(state.daily[k]).some(function(f){return state.daily[k][f]})})}
+function docOf(){return {v:1,settings:state.settings,trades:state.trades,daily:state.daily,weekly:state.weekly}}
+function applyDoc(d){state.settings=Object.assign({},state.settings,d.settings||{});state.settings.contract=Object.assign({},CONTRACT,(d.settings||{}).contract||{});state.trades=d.trades||[];state.daily=d.daily||{};state.weekly=d.weekly||{};save(true)}
+function mergeDoc(d){var ids={};state.trades.forEach(function(t){ids[t.id]=1});(d.trades||[]).forEach(function(t){if(!ids[t.id])state.trades.push(t)});Object.keys(d.daily||{}).forEach(function(k){if(!state.daily[k])state.daily[k]=d.daily[k]});Object.keys(d.weekly||{}).forEach(function(k){if(!state.weekly[k])state.weekly[k]=d.weekly[k]});save(true)}
+function pushDoc(){
+  var stamp=new Date().toISOString();
+  return cfetch('/rest/v1/journal?on_conflict=user_id',{method:'POST',headers:{Authorization:'Bearer '+cloud.access,Prefer:'resolution=merge-duplicates,return=minimal'},body:JSON.stringify({user_id:cloud.uid,data:docOf(),updated_at:stamp})}).then(function(r){if(!r.ok)return jerr(r);cloud.lastSync=stamp;cloud.dirty=false;csave()});
+}
+function refreshView(){var h=(location.hash||'#home').slice(1);if(h==='add'||h.indexOf('edit-')===0)return;route()}
+function syncNow(){
+  if(!signedIn()||cstat.busy||cstat.conflict)return Promise.resolve();
+  if(!navigator.onLine){cstat.msg='Offline. Changes sync when you are back online.';renderCloud();return Promise.resolve()}
+  cstat.busy=true;cstat.msg='Syncing…';renderCloud();
+  return ensureToken().then(function(){return cfetch('/rest/v1/journal?select=data,updated_at&limit=1',{headers:{Authorization:'Bearer '+cloud.access}}).then(jerr)}).then(function(rows){
+    var row=rows&&rows[0];
+    if(!row)return pushDoc();
+    var same=cloud.lastSync&&new Date(row.updated_at).getTime()===new Date(cloud.lastSync).getTime();
+    if(same)return cloud.dirty?pushDoc():null;
+    if(!cloud.dirty){applyDoc(row.data);cloud.lastSync=row.updated_at;csave();cstat.applied=true;return null}
+    cstat.conflict=row;return null;
+  }).then(function(){cstat.msg=cstat.conflict?'Choose which data to keep.':'Synced '+hhmm()}).catch(function(e){
+    cstat.msg=(e&&e.message==='Failed to fetch')?'Could not reach the cloud. Check your connection and project URL.':'Sync problem: '+((e&&e.message)||'unknown');
+  }).then(function(){cstat.busy=false;renderCloud();if(cstat.applied){cstat.applied=false;toast('Synced from your cloud copy');refreshView()}else if(cstat.conflict)refreshView()});
+}
+function cloudBanner(){return cstat.conflict?'<a class="guard" href="#setup" style="display:block;color:inherit;text-decoration:none;border-color:var(--gold);background:rgba(244,183,58,.1)"><b style="color:var(--gold)">Cloud sync</b>Your cloud copy and this device differ. Tap to choose what to keep.</a>':''}
+function cloudInner(){
+  var s='';
+  if(signedIn()){
+    s+='<div class="kv"><span>Account</span><span>'+esc(cloud.email)+'</span></div><div class="kv"><span>Status</span><span>'+esc(cstat.msg||(cloud.dirty?'Waiting to sync':'Signed in'))+'</span></div>';
+    if(cstat.conflict)s+='<div class="warnbox">Your cloud copy and this device both changed. Pick what to keep.</div><button class="btn" id="cc-merge">Merge both (recommended)</button><button class="btn" id="cc-cloud">Use the cloud copy</button><button class="btn" id="cc-dev">Use this device and overwrite the cloud</button>';
+    s+='<div class="g2"><button class="btn" id="cs-now">Sync now</button><button class="btn warn" id="cs-out">Sign out</button></div>';
+  }else{
+    s+='<label>Project URL<input id="cs-url" type="url" autocomplete="off" placeholder="https://abcdxyz.supabase.co" value="'+esc(cloud.url)+'"></label><label>Anon public key<input id="cs-key" type="text" autocomplete="off" value="'+esc(cloud.key)+'"></label><label>Email<input id="cs-email" type="email" autocomplete="username" value="'+esc(cloud.email)+'"></label><label>Password<input id="cs-pw" type="password" autocomplete="current-password" placeholder="At least 6 characters"></label><p class="err" id="cs-err" hidden></p><div class="g2"><button class="btn pri" id="cs-in">Sign in</button><button class="btn" id="cs-up">Create account</button></div>';
+  }
+  return s;
+}
+function renderCloud(){var c=$('#cloud-body');if(c){c.innerHTML=cloudInner();wireCloud()}}
+function cloudCard(){
+  return '<section class="card stack"><h3>Cloud sync</h3><p class="note">Sync your trades, notes, and settings between devices. Screenshots stay on the device that took them. Needs internet and a free Supabase project.</p>'
+   +'<details class="card"><summary>One-time setup (about 5 minutes)</summary><div class="stack note"><p>1. Go to https://supabase.com, create a free account, and tap New project. Name it mktrades, set a database password, pick a nearby region, and wait about two minutes.</p><p>2. Open SQL Editor, tap New query, paste the code below, and tap Run.</p><textarea readonly id="cs-sql" class="mono" style="font-size:12px;min-height:120px">'+esc(CLOUD_SQL)+'</textarea><button class="btn sm" id="cs-copy" type="button">Copy code</button><p>3. Open Authentication, then Sign In / Providers, open Email, and turn off Confirm email. Save.</p><p>4. Open Project Settings, then API Keys (or API). Copy the Project URL and the anon public key (newer dashboards call it the publishable key). Paste both below, add your email and a password, and tap Create account.</p></div></details>'
+   +'<div id="cloud-body" class="stack">'+cloudInner()+'</div></section>';
+}
+function doAuth(up){
+  var url=$('#cs-url').value.trim(),key=$('#cs-key').value.trim(),em=$('#cs-email').value.trim(),pw=$('#cs-pw').value,er=$('#cs-err');
+  er.hidden=true;
+  if(!/^https:\/\/\S+$/.test(url)||!key||!em||pw.length<6){er.textContent='Fill in the project URL, the key, your email, and a password of at least 6 characters.';er.hidden=false;return}
+  cloud.url=url.replace(/\/+$/,'');cloud.key=key;cloud.email=em;csave();
+  var body=JSON.stringify({email:em,password:pw});
+  var p=up?cfetch('/auth/v1/signup',{method:'POST',body:body}):cfetch('/auth/v1/token?grant_type=password',{method:'POST',body:body});
+  p.then(jerr).then(function(j){
+    if(!j.access_token){er.textContent='Account created. Confirm it from your email, then tap Sign in.';er.hidden=false;return}
+    applySession(j);cloud.lastSync='';cloud.dirty=hasRealData();cstat.conflict=null;csave();toast('Signed in');
+    renderCloud();return syncNow();
+  }).catch(function(e){er.textContent=e.message==='Failed to fetch'?'Could not reach that project URL. Check it and your connection.':e.message;er.hidden=false});
+}
+function wireCloud(){
+  var g=function(id){return document.getElementById(id)};
+  if(g('cs-in'))g('cs-in').onclick=function(){doAuth(false)};
+  if(g('cs-up'))g('cs-up').onclick=function(){doAuth(true)};
+  if(g('cs-now'))g('cs-now').onclick=function(){syncNow()};
+  if(g('cs-out'))g('cs-out').onclick=function(){cloud.access='';cloud.refresh='';cloud.uid='';cloud.exp=0;cloud.lastSync='';cloud.dirty=false;csave();cstat.conflict=null;cstat.msg='';renderCloud();toast('Signed out. Your data stays on this device.')};
+  if(g('cs-copy'))g('cs-copy').onclick=function(){var ta=g('cs-sql');var ok=function(){toast('Code copied')},no=function(){ta.select();toast('Select the text and copy it')};try{navigator.clipboard.writeText(CLOUD_SQL).then(ok,no)}catch(e){no()}};
+  var c=cstat.conflict;
+  if(g('cc-merge'))g('cc-merge').onclick=function(){mergeDoc(c.data);cloud.lastSync=c.updated_at;cloud.dirty=true;csave();cstat.conflict=null;syncNow().then(refreshView)};
+  if(g('cc-cloud'))g('cc-cloud').onclick=function(){applyDoc(c.data);cloud.lastSync=c.updated_at;cloud.dirty=false;csave();cstat.conflict=null;cstat.msg='Synced '+hhmm();renderCloud();refreshView()};
+  if(g('cc-dev'))g('cc-dev').onclick=function(){cloud.lastSync=c.updated_at;cloud.dirty=true;csave();cstat.conflict=null;syncNow()};
+}
+
+var TFS=[['M1','1'],['M5','5'],['M15','15'],['H1','60'],['H4','240'],['D','D']];
+var MSYM=[['EUR/USD','OANDA:EURUSD'],['GBP/USD','OANDA:GBPUSD'],['Gold','OANDA:XAUUSD'],['Silver','OANDA:XAGUSD']];
+function tv(el,file,cfg){
+  if(!el)return;el.innerHTML='';
+  var w=document.createElement('div');w.className='tradingview-widget-container';
+  var i=document.createElement('div');i.className='tradingview-widget-container__widget';w.appendChild(i);
+  var s=document.createElement('script');s.src='https://s3.tradingview.com/external-embedding/'+file;s.async=true;s.text=JSON.stringify(cfg);w.appendChild(s);el.appendChild(w);
+}
+function vMarket(){
+  var u=state.ui;u.sym=u.sym||0;u.tf=u.tf||'60';
+  var h='<h1>Charts and news</h1><div class="tvbox" id="tv-tape" style="height:78px"></div>';
+  h+='<div class="chips" id="tv-sym">'+MSYM.map(function(m,i){return '<button class="chip'+(u.sym===i?' on':'')+'" data-i="'+i+'">'+m[0]+'</button>'}).join('')+'</div>';
+  h+='<div class="chips" id="tv-tf">'+TFS.map(function(t){return '<button class="chip'+(u.tf===t[1]?' on':'')+'" data-t="'+t[1]+'">'+t[0]+'</button>'}).join('')+'</div>';
+  h+='<div class="tvbox" id="tv-chart"><p class="note" style="padding:14px">Loading the chart…</p></div><a class="btn full" id="tv-open" target="_blank" rel="noopener" href="#">Open in TradingView</a>';
+  h+='<section class="card"><h3>Economic calendar (USD, EUR, GBP)</h3><div class="tvbox" id="tv-cal" style="height:520px;border:0"><p class="note">Loading the calendar…</p></div></section>';
+  h+='<p class="note">Charts and news come from TradingView and need an internet connection.</p>';
+  setTimeout(wireMarket,0);return h;
+}
+function wireMarket(){
+  var u=state.ui,tz='Etc/UTC';try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||tz}catch(e){}
+  function link(){var a=$('#tv-open');if(a)a.href='https://www.tradingview.com/chart/?symbol='+encodeURIComponent(MSYM[u.sym][1])+'&interval='+encodeURIComponent(u.tf)}
+  function chart(){tv($('#tv-chart'),'embed-widget-advanced-chart.js',{autosize:true,symbol:MSYM[u.sym][1],interval:u.tf,timezone:tz,theme:'dark',style:'1',locale:'en',backgroundColor:'rgba(6,23,15,1)',gridColor:'rgba(36,95,67,0.35)',hide_side_toolbar:true,allow_symbol_change:false,save_image:false,calendar:false,hide_volume:true,withdateranges:false,support_host:'https://www.tradingview.com'});link()}
+  link();
+  if(!navigator.onLine){['tv-tape','tv-chart','tv-cal'].forEach(function(id){var e=$('#'+id);if(e)e.innerHTML='<p class="note" style="padding:14px">You are offline. Charts and news load when you are back online.</p>'});}
+  else{
+    tv($('#tv-tape'),'embed-widget-ticker-tape.js',{symbols:MSYM.map(function(m){return {proName:m[1],title:m[0]}}).concat([{proName:'TVC:DXY',title:'DXY'}]),showSymbolLogo:false,isTransparent:true,displayMode:'adaptive',colorTheme:'dark',locale:'en'});
+    chart();
+    tv($('#tv-cal'),'embed-widget-events.js',{colorTheme:'dark',isTransparent:true,width:'100%',height:'520',locale:'en',importanceFilter:'0,1',currencyFilter:'USD,EUR,GBP'});
+  }
+  $$('#tv-sym .chip').forEach(function(b){b.onclick=function(){u.sym=+b.dataset.i;$$('#tv-sym .chip').forEach(function(x){x.classList.toggle('on',x===b)});if(navigator.onLine)chart();else link()}});
+  $$('#tv-tf .chip').forEach(function(b){b.onclick=function(){u.tf=b.dataset.t;$$('#tv-tf .chip').forEach(function(x){x.classList.toggle('on',x===b)});if(navigator.onLine)chart();else link()}});
+}
+
+var imp={rows:null};
+function pn(s){s=String(s==null?'':s).replace(/[\s  ]/g,'');if(!s)return null;if(s.indexOf(',')>=0&&s.indexOf('.')>=0)s=s.replace(/,/g,'');else s=s.replace(',','.');var n=parseFloat(s);return isFinite(n)?n:null}
+function normSym(s){var u=String(s||'').toUpperCase().replace(/[^A-Z]/g,'');if(u.indexOf('EURUSD')===0)return 'EUR/USD';if(u.indexOf('GBPUSD')===0)return 'GBP/USD';if(u.indexOf('XAUUSD')===0||u.indexOf('GOLD')===0)return 'XAU/USD';if(u.indexOf('XAGUSD')===0||u.indexOf('SILVER')===0)return 'XAG/USD';return null}
+function pdt(s){var m=String(s||'').match(/(\d{4})[.\-\/](\d{2})[.\-\/](\d{2})[ T]+(\d{1,2}):(\d{2})/);return m?{date:m[1]+'-'+m[2]+'-'+m[3],time:p2(+m[4])+':'+m[5]}:null}
+function colMap(low){
+  var idx=function(f){var a=[];low.forEach(function(x,i){if(f(x))a.push(i)});return a};
+  var times=idx(function(x){return x.indexOf('time')>=0}),prices=idx(function(x){return x.indexOf('price')>=0});
+  return {sym:idx(function(x){return x==='symbol'||x==='item'||x==='instrument'})[0],type:idx(function(x){return x==='type'})[0],vol:idx(function(x){return x==='volume'||x==='size'||x==='lots'||x==='quantity'})[0],
+    ot:times[0],ct:times[times.length-1],tc:times.length,op:prices[0],cp:prices[prices.length-1],pc:prices.length,
+    sl:idx(function(x){return /^s\s*\/\s*l$|^sl$|stop/.test(x)})[0],tp:idx(function(x){return /^t\s*\/\s*p$|^tp$|take/.test(x)})[0],
+    pos:idx(function(x){return x==='position'||x==='ticket'||x==='order'})[0],profit:idx(function(x){return x==='profit'})[0],comm:idx(function(x){return x==='commission'})[0],swap:idx(function(x){return x==='swap'})[0]};
+}
+function parseRows(rows,o){
+  var out=[],sk={other:0,bad:0},H=null;
+  rows.forEach(function(r){
+    var low=r.map(function(c){return String(c).trim().toLowerCase()});
+    var hasSym=low.indexOf('symbol')>=0||low.indexOf('item')>=0||low.indexOf('instrument')>=0;
+    if(hasSym&&low.indexOf('type')>=0){
+      var ok=low.indexOf('profit')>=0&&low.indexOf('direction')<0&&low.indexOf('deal')<0;
+      H=ok?colMap(low):null;if(H&&(H.tc<2||H.pc<2))H=null;return;
+    }
+    if(!H||r.length<8)return;
+    var typ=String(r[H.type]||'').trim().toLowerCase();if(typ!=='buy'&&typ!=='sell')return;
+    var sym=normSym(r[H.sym]);if(!sym){sk.other++;return}
+    var ot=pdt(r[H.ot]),ep=pn(r[H.op]),xp=pn(r[H.cp]);if(!ot||ep==null||xp==null){sk.bad++;return}
+    var sl=pn(r[H.sl]),tp=pn(r[H.tp]);sl=sl>0?sl:null;tp=tp>0?tp:null;
+    var pnl=(pn(r[H.profit])||0)+(H.comm!=null?pn(r[H.comm])||0:0)+(H.swap!=null?pn(r[H.swap])||0:0);
+    var ticket=H.pos!=null?String(r[H.pos]).replace(/\D/g,''):'';
+    var id='mt5-'+(ticket||(ot.date+ot.time+sym+typ+ep).replace(/[^A-Za-z0-9]/g,''));
+    var t={id:id,date:ot.date,time:ot.time,pair:sym,dir:typ==='buy'?'Buy':'Sell',model:o.model,session:o.session,weekly:'',aligned:'',dailyBias:'',corr:'Not checked',setup:'Imported from MT5',entry:ep,sl:sl,tp:tp,exit:xp,riskPct:null,lots:pn(r[H.vol]),pnl:Math.round(pnl*100)/100,grade:'',mistake:'',emotion:'',rules:'',notes:'',img:false,sample:false,imported:true,ck:null,chk:null};
+    t.r=sl!=null&&sl!==ep?rOf(t):null;out.push(t);
+  });
+  return {trades:out,sk:sk};
+}
+function splitCsv(l,d){var o=[],c='',q=false;for(var i=0;i<l.length;i++){var ch=l[i];if(ch==='"'){if(q&&l[i+1]==='"'){c+='"';i++}else q=!q}else if(ch===d&&!q){o.push(c);c=''}else c+=ch}o.push(c);return o}
+function rowsFromText(text){
+  if(/<table/i.test(text)){var d=new DOMParser().parseFromString(text,'text/html');return $$('tr',d).map(function(tr){return $$('td,th',tr).map(function(c){return (c.textContent||'').replace(/\s+/g,' ').trim()})})}
+  var lines=text.split(/\r?\n/).filter(function(l){return l.trim()}),best=',',cnt=-1;
+  [',',';','\t'].forEach(function(dl){var c=lines.slice(0,10).reduce(function(a,l){return a+l.split(dl).length},0);if(c>cnt){cnt=c;best=dl}});
+  return lines.map(function(l){return splitCsv(l,best)});
+}
+function readText(f){return new Promise(function(res,rej){var fr=new FileReader();fr.onload=function(){var b=new Uint8Array(fr.result),le=b[0]===0xFF&&b[1]===0xFE,be=b[0]===0xFE&&b[1]===0xFF;res(new TextDecoder(le?'utf-16le':be?'utf-16be':'utf-8').decode(b))};fr.onerror=rej;fr.readAsArrayBuffer(f)})}
+function importCard(){
+  return '<section class="card stack"><h3>Import from MT5</h3><p class="note">On a computer, open MT5 and go to View, then Toolbox, then History. Choose your period, right-click the list, and pick Report, then HTML. A CSV file with the same columns also works. Pick that file here. Only EUR/USD, GBP/USD, Gold, and Silver trades are imported, and times stay in your broker server time.</p><div class="g2"><label>Model<select id="im-model">'+opts(MODELS,'H4 to M15')+'</select></label><label>Session<select id="im-session">'+opts(SESSIONS,'Other')+'</select></label></div><input id="im-file" type="file" accept=".html,.htm,.csv,.txt"><div id="im-out" class="stack"></div></section>';
+}
+function wireImport(){
+  var f=$('#im-file');if(!f)return;
+  function show(){
+    var out=$('#im-out');if(!imp.rows){out.innerHTML='';return}
+    var r=parseRows(imp.rows,{model:$('#im-model').value,session:$('#im-session').value});
+    var have={};state.trades.forEach(function(t){have[t.id]=1});
+    var fresh=r.trades.filter(function(t){return !have[t.id]}),dup=r.trades.length-fresh.length;
+    if(!r.trades.length){out.innerHTML='<p class="err">No closed trades found. Use the Positions report from MT5 (HTML) or a CSV with symbol, type, volume, open and close time and price, S/L, T/P, and profit columns. Other symbols are skipped.</p>';return}
+    var by={};fresh.forEach(function(t){by[SHORT[t.pair]]=(by[SHORT[t.pair]]||0)+1});
+    var nosl=fresh.filter(function(t){return t.r==null}).length;
+    var h='<div class="kv"><span>Ready to import</span><span class="mono">'+fresh.length+'</span></div><div class="kv"><span>By pair</span><span>'+Object.keys(by).map(function(k){return esc(k)+' '+by[k]}).join(', ')+'</span></div>';
+    if(dup)h+='<div class="kv"><span>Already in your journal</span><span class="mono">'+dup+'</span></div>';
+    if(r.sk.other)h+='<div class="kv"><span>Skipped other symbols</span><span class="mono">'+r.sk.other+'</span></div>';
+    if(r.sk.bad)h+='<div class="kv"><span>Skipped rows without time or price</span><span class="mono">'+r.sk.bad+'</span></div>';
+    if(nosl)h+='<p class="note">'+nosl+' trade'+(nosl>1?'s have':' has')+' no stop loss in the report, so R cannot be worked out. They show as Open until you edit them and add a stop. If you moved your stop, edit it for a true R.</p>';
+    if(fresh.length)h+='<button class="btn pri full" id="im-go">Import '+fresh.length+' trade'+(fresh.length>1?'s':'')+'</button>';
+    out.innerHTML=h;
+    var go=$('#im-go');if(go)go.onclick=function(){state.trades=state.trades.concat(fresh);save();toast(fresh.length+' trades imported');location.hash='#trades'};
+  }
+  f.onchange=function(){var file=f.files&&f.files[0];if(!file)return;readText(file).then(function(t){imp.rows=rowsFromText(t);show()}).catch(function(){$('#im-out').innerHTML='<p class="err">That file could not be read.</p>'})};
+  $('#im-model').onchange=show;$('#im-session').onchange=show;
+}
+
 function emptyCard(){return '<section class="card empty"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+CiAgPHRpdGxlPk1LdHJhZGVzIGxvZ288L3RpdGxlPgogIDxkZWZzPgogICAgPHJhZGlhbEdyYWRpZW50IGlkPSJiZyIgY3g9IjAuNSIgY3k9IjAuMzUiIHI9IjAuODUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMxZjg3NTgiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIwLjU1IiBzdG9wLWNvbG9yPSIjMGQ0YTMwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzA0MWExMCIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZmFjZSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZmYwYjMiLz48c3RvcCBvZmZzZXQ9IjAuNDUiIHN0b3AtY29sb3I9IiNmN2I3MzMiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNjNzdkMGEiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNpZGUiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjOGE1YTBlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjM2EyNDA2Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGcgaWQ9Im1rIj4KICAgICAgPHBvbHlnb24gcG9pbnRzPSIwLDE0MCAwLDAgMjgsMCA2NSw3MiAxMDIsMCAxMzAsMCAxMzAsMTQwIDEwNCwxNDAgMTA0LDUwIDY1LDExOCAyNiw1MCAyNiwxNDAiLz4KICAgICAgPHBvbHlnb24gcG9pbnRzPSIxNDYsMCAxNzQsMCAxNzQsNTggMjM0LDAgMjcyLDAgMjA4LDcwIDI3NiwxNDAgMjM4LDE0MCAxNzQsODIgMTc0LDE0MCAxNDYsMTQwIi8+CiAgICA8L2c+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iOTYiIGZpbGw9InVybCgjYmcpIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjU2LDI1Nikgc2NhbGUoMS4wKSB0cmFuc2xhdGUoLTI1NiwtMjU2KSI+CiAgPGc+CjxnIG9wYWNpdHk9IjAuNSI+PGxpbmUgeDE9IjQ0IiB5MT0iMzczLjAiIHgyPSI0NCIgeTI9IjQyNS4wIiBzdHJva2U9IiMzZWUwOGEiIHN0cm9rZS13aWR0aD0iMyIvPjxyZWN0IHg9IjM2IiB5PSIzODcuMCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjI2IiByeD0iMiIgZmlsbD0iIzNlZTA4YSIvPjwvZz4KPGcgb3BhY2l0eT0iMC41Ij48bGluZSB4MT0iNzYiIHkxPSIzNDQuMCIgeDI9Ijc2IiB5Mj0iMzk4LjAiIHN0cm9rZT0iIzNlZTA4YSIgc3Ryb2tlLXdpZHRoPSIzIi8+PHJlY3QgeD0iNjgiIHk9IjM2Mi4wIiB3aWR0aD0iMTYiIGhlaWdodD0iMTgiIHJ4PSIyIiBmaWxsPSIjM2VlMDhhIi8+PC9nPgo8ZyBvcGFjaXR5PSIwLjQyIj48bGluZSB4MT0iMTA4IiB5MT0iMzQzLjAiIHgyPSIxMDgiIHkyPSI0MDcuMCIgc3Ryb2tlPSIjZmY3MDYyIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSIxMDAiIHk9IjM2NS4wIiB3aWR0aD0iMTYiIGhlaWdodD0iMzAiIHJ4PSIyIiBmaWxsPSIjZmY3MDYyIi8+PC9nPgo8ZyBvcGFjaXR5PSIwLjUiPjxsaW5lIHgxPSIxNDAiIHkxPSIzMjQuMCIgeDI9IjE0MCIgeTI9IjM3OC4wIiBzdHJva2U9IiMzZWUwOGEiIHN0cm9rZS13aWR0aD0iMyIvPjxyZWN0IHg9IjEzMiIgeT0iMzM4LjAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIyMiIgcng9IjIiIGZpbGw9IiMzZWUwOGEiLz48L2c+CjxnIG9wYWNpdHk9IjAuNSI+PGxpbmUgeDE9IjE3MiIgeTE9IjMyMC4wIiB4Mj0iMTcyIiB5Mj0iMzg2LjAiIHN0cm9rZT0iIzNlZTA4YSIgc3Ryb2tlLXdpZHRoPSIzIi8+PHJlY3QgeD0iMTY0IiB5PSIzMzguMCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjM2IiByeD0iMiIgZmlsbD0iIzNlZTA4YSIvPjwvZz4KPGcgb3BhY2l0eT0iMC40MiI+PGxpbmUgeDE9IjIwNCIgeTE9IjI3My4wIiB4Mj0iMjA0IiB5Mj0iMzMzLjAiIHN0cm9rZT0iI2ZmNzA2MiIgc3Ryb2tlLXdpZHRoPSIzIi8+PHJlY3QgeD0iMTk2IiB5PSIyOTUuMCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjIwIiByeD0iMiIgZmlsbD0iI2ZmNzA2MiIvPjwvZz4KPGcgb3BhY2l0eT0iMC41Ij48bGluZSB4MT0iMjM2IiB5MT0iMjkwLjAiIHgyPSIyMzYiIHkyPSIzNDQuMCIgc3Ryb2tlPSIjM2VlMDhhIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSIyMjgiIHk9IjMwNC4wIiB3aWR0aD0iMTYiIGhlaWdodD0iMjgiIHJ4PSIyIiBmaWxsPSIjM2VlMDhhIi8+PC9nPgo8ZyBvcGFjaXR5PSIwLjUiPjxsaW5lIHgxPSIyNjgiIHkxPSIyNTkuMCIgeDI9IjI2OCIgeTI9IjMxMS4wIiBzdHJva2U9IiMzZWUwOGEiIHN0cm9rZS13aWR0aD0iMyIvPjxyZWN0IHg9IjI2MCIgeT0iMjc3LjAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjIiIGZpbGw9IiMzZWUwOGEiLz48L2c+CjxnIG9wYWNpdHk9IjAuNDIiPjxsaW5lIHgxPSIzMDAiIHkxPSIyNTUuMCIgeDI9IjMwMCIgeTI9IjMyMy4wIiBzdHJva2U9IiNmZjcwNjIiIHN0cm9rZS13aWR0aD0iMyIvPjxyZWN0IHg9IjI5MiIgeT0iMjc3LjAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIzNCIgcng9IjIiIGZpbGw9IiNmZjcwNjIiLz48L2c+CjxnIG9wYWNpdHk9IjAuNSI+PGxpbmUgeDE9IjMzMiIgeTE9IjIyMS4wIiB4Mj0iMzMyIiB5Mj0iMjc3LjAiIHN0cm9rZT0iIzNlZTA4YSIgc3Ryb2tlLXdpZHRoPSIzIi8+PHJlY3QgeD0iMzI0IiB5PSIyMzUuMCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjI0IiByeD0iMiIgZmlsbD0iIzNlZTA4YSIvPjwvZz4KPGcgb3BhY2l0eT0iMC41Ij48bGluZSB4MT0iMzY0IiB5MT0iMjIzLjAiIHgyPSIzNjQiIHkyPSIyODMuMCIgc3Ryb2tlPSIjM2VlMDhhIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSIzNTYiIHk9IjI0MS4wIiB3aWR0aD0iMTYiIGhlaWdodD0iMzAiIHJ4PSIyIiBmaWxsPSIjM2VlMDhhIi8+PC9nPgo8ZyBvcGFjaXR5PSIwLjQyIj48bGluZSB4MT0iMzk2IiB5MT0iMTk2LjAiIHgyPSIzOTYiIHkyPSIyNTQuMCIgc3Ryb2tlPSIjZmY3MDYyIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSIzODgiIHk9IjIxOC4wIiB3aWR0aD0iMTYiIGhlaWdodD0iMTgiIHJ4PSIyIiBmaWxsPSIjZmY3MDYyIi8+PC9nPgo8ZyBvcGFjaXR5PSIwLjUiPjxsaW5lIHgxPSI0MjgiIHkxPSIxOTcuMCIgeDI9IjQyOCIgeTI9IjI0OS4wIiBzdHJva2U9IiMzZWUwOGEiIHN0cm9rZS13aWR0aD0iMyIvPjxyZWN0IHg9IjQyMCIgeT0iMjExLjAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIyNiIgcng9IjIiIGZpbGw9IiMzZWUwOGEiLz48L2c+CiAgPC9nPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDExOCwxNTApIj4KPHVzZSBocmVmPSIjbWsiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE0LDE0KSIgZmlsbD0iIzFjMTEwNCIgb3BhY2l0eT0iLjU1Ii8+Cjx1c2UgaHJlZj0iI21rIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNC4wLDE0LjApIiBmaWxsPSJ1cmwoI3NpZGUpIi8+Cjx1c2UgaHJlZj0iI21rIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMi42LDEyLjYpIiBmaWxsPSJ1cmwoI3NpZGUpIi8+Cjx1c2UgaHJlZj0iI21rIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMS4yLDExLjIpIiBmaWxsPSJ1cmwoI3NpZGUpIi8+Cjx1c2UgaHJlZj0iI21rIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg5Ljc5OTk5OTk5OTk5OTk5OSw5Ljc5OTk5OTk5OTk5OTk5OSkiIGZpbGw9InVybCgjc2lkZSkiLz4KPHVzZSBocmVmPSIjbWsiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDguMzk5OTk5OTk5OTk5OTk5LDguMzk5OTk5OTk5OTk5OTk5KSIgZmlsbD0idXJsKCNzaWRlKSIvPgo8dXNlIGhyZWY9IiNtayIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNy4wLDcuMCkiIGZpbGw9InVybCgjc2lkZSkiLz4KPHVzZSBocmVmPSIjbWsiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDUuNiw1LjYpIiBmaWxsPSJ1cmwoI3NpZGUpIi8+Cjx1c2UgaHJlZj0iI21rIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0LjE5OTk5OTk5OTk5OTk5OSw0LjE5OTk5OTk5OTk5OTk5OSkiIGZpbGw9InVybCgjc2lkZSkiLz4KPHVzZSBocmVmPSIjbWsiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIuOCwyLjgpIiBmaWxsPSJ1cmwoI3NpZGUpIi8+Cjx1c2UgaHJlZj0iI21rIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxLjQsMS40KSIgZmlsbD0idXJsKCNzaWRlKSIvPgogICAgPHVzZSBocmVmPSIjbWsiIGZpbGw9InVybCgjZmFjZSkiLz4KICA8L2c+CiAgPC9nPgogIDxyZWN0IHg9IjIiIHk9IjIiIHdpZHRoPSI1MDgiIGhlaWdodD0iNTA4IiByeD0iOTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Y3YjczMyIgc3Ryb2tlLW9wYWNpdHk9Ii4yOCIgc3Ryb2tlLXdpZHRoPSIzIi8+Cjwvc3ZnPgo=" alt=""><h2>Log your first trade</h2><p>Every trade you add builds your equity curve, win rate, and expectancy.</p><a class="btn pri full" href="#add">Add a trade</a><div style="height:10px"></div><button class="btn full" id="load-sample">Preview with sample trades</button></section>'}
 function wireEmpty(){var b=$('#load-sample');if(b)b.onclick=function(){addSamples();route()}}
 function periodCut(){var p=state.ui.period;if(p==='30d')return addDays(todayStr(),-30);if(p==='week')return weekStart(todayStr());return '0000'}
 
 function vHome(){
   var all=state.trades;
-  var top=guardHtml()+clockHtml();
+  var top=guardHtml()+cloudBanner()+clockHtml();
   if(!all.length){setTimeout(wireEmpty,0);return top+consistencyCard()+emptyCard()}
   var cut=periodCut(),list=all.filter(function(t){return t.date>=cut}),s=stats(list);
   var open=list.filter(function(t){return t.r==null}).length;
@@ -417,7 +603,7 @@ function vTrades(){
   var h='<h1>Trades</h1><div class="chips" id="pf">'+chips+'</div><section class="card">';
   h+=list.length?list.map(function(t){
     var r=t.r==null?'<span class="pill open">Open</span>':'<b class="mono '+cls(t.r)+'">'+R(t.r)+'</b>';
-    return '<a class="row" href="#trade-'+t.id+'"><div class="l"><b>'+esc(SHORT[t.pair]||t.pair)+'<span class="pill '+(t.dir==='Buy'?'buy':'sell')+'">'+esc(t.dir)+'</span>'+(t.sample?'<span class="pill smp">Sample</span>':'')+'</b><small>'+fmtDate(t.date)+' · '+esc(t.model)+' · '+esc(t.session)+'</small></div><div class="r">'+r+'<div><span class="grade">'+esc(t.grade||'-')+'</span></div></div></a>'}).join(''):'<p class="muted">No trades for this pair yet.</p>';
+    return '<a class="row" href="#trade-'+t.id+'"><div class="l"><b>'+esc(SHORT[t.pair]||t.pair)+'<span class="pill '+(t.dir==='Buy'?'buy':'sell')+'">'+esc(t.dir)+'</span>'+(t.sample?'<span class="pill smp">Sample</span>':'')+(t.imported?'<span class="pill smp">Imported</span>':'')+'</b><small>'+fmtDate(t.date)+' · '+esc(t.model)+' · '+esc(t.session)+'</small></div><div class="r">'+r+'<div><span class="grade">'+esc(t.grade||'-')+'</span></div></div></a>'}).join(''):'<p class="muted">No trades for this pair yet.</p>';
   return h+'</section>';
 }
 function wireTrades(){$$('#pf .chip').forEach(function(b){b.onclick=function(){state.ui.pair=b.dataset.f;route()}})}
@@ -616,6 +802,7 @@ function vSetup(){
   var h='<h1>Setup</h1><section class="card stack"><h3>Account</h3><div class="g2"><label>Balance ($)<input id="s-bal" class="mono" inputmode="decimal" value="'+esc(s.balance)+'"></label><label>Default risk %<input id="s-risk" class="mono" inputmode="decimal" value="'+esc(s.risk)+'"></label></div></section>';
   h+='<section class="card stack"><h3>Contract size per 1 lot</h3><div class="g2">'+PAIRS.map(function(p){return '<label>'+SHORT[p]+'<input class="mono" inputmode="decimal" data-c="'+p+'" value="'+esc(s.contract[p])+'"></label>'}).join('')+'</div><p class="note">Defaults match a typical MT5 account: 100,000 units for forex, 100 oz for Gold, 5,000 oz for Silver. Check your broker.</p></section>';
   h+='<section class="card stack"><h3>Backup</h3><p class="note">Your trades live only in this browser. Export a backup regularly, because clearing site data erases them.</p><div class="g2"><button class="btn" id="b-copy">Copy backup</button><button class="btn" id="b-dl">Download file</button></div><textarea id="b-box" class="mono" style="font-size:12px;min-height:90px" placeholder="Paste a backup here to restore it"></textarea><input id="b-file" type="file" accept=".json,application/json"><button class="btn" id="b-imp">Restore from pasted backup</button><p class="err" id="b-err" hidden></p></section>';
+  h+=cloudCard()+importCard();
   h+='<section class="card stack"><h3>Data</h3>'+(state.trades.some(function(t){return t.sample})?'<button class="btn" id="d-smp">Remove sample trades</button>':'<button class="btn" id="d-add">Add sample trades</button>')+'<button class="btn warn" id="d-all">Erase everything</button></section>';
   h+='<p class="note" style="text-align:center">MKtrades Journal · Consistency and grind</p>';
   setTimeout(wireSetup,0);return h;
@@ -638,6 +825,7 @@ function wireSetup(){
     state.trades=o.trades;state.daily=o.daily||{};state.weekly=o.weekly||{};save();
     Promise.all(Object.keys(o.images||{}).map(function(k){return idb.put(k,o.images[k])})).then(function(){toast('Backup restored');location.hash='#home'})
   };
+  wireCloud();wireImport();
   var a=$('#d-add'),m=$('#d-smp'),all=$('#d-all');
   if(a)a.onclick=function(){addSamples();route()};
   if(m)m.onclick=function(){state.trades=state.trades.filter(function(t){return !t.sample});save();toast('Sample trades removed');route()};
@@ -655,6 +843,7 @@ function route(){
   else if(h==='daily'){n='daily';html=vDaily()}
   else if(h==='review'){n='review';html=vReview()}
   else if(h==='setup'){n='';html=vSetup()}
+  else if(h==='market'){n='';html=vMarket()}
   else{html=vHome()}
   v.innerHTML=html;
   if(n==='home'){wireHome();startClock()}if(n==='trades'&&h==='trades')wireTrades();
@@ -664,6 +853,10 @@ var last='';
 window.addEventListener('hashchange',function(){var cur=(location.hash||'#home');if(cur!==last)window.scrollTo(0,0);last=cur;route()});
 load();last=location.hash||'#home';
 idb.open().then(function(){route()});route();
+window.addEventListener('online',function(){syncNow()});
+document.addEventListener('visibilitychange',function(){if(!document.hidden)syncNow()});
+setInterval(function(){if(!document.hidden)syncNow()},60000);
+setTimeout(function(){syncNow()},800);
 try{if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol))navigator.serviceWorker.register('sw.js').catch(function(){})}catch(e){}
 })();
 </script>
